@@ -93,6 +93,7 @@
   box-shadow: 
     0 0 0 1px #000,
     0 2px 0 0 #c0392b;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
 /* Pokemon Viewer (3D Canvas) */
@@ -107,6 +108,7 @@
   box-shadow: 
     0 0 0 1px #000,
     inset 0 2px 0 0 #fff;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
 /* Sketchfab Embed Styling */
@@ -145,6 +147,7 @@
   box-shadow: 
     0 0 0 1px #000,
     0 2px 0 0 #c0392b;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
 .pokemon-stats div {
@@ -171,6 +174,7 @@
   box-shadow: 
     0 0 0 1px #000,
     inset 0 2px 0 0 #fff;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 
 /* Pokemon Item */
@@ -226,16 +230,25 @@
 .pokeball-icon {
   color: #e74c3c;
   font-size: 16px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
 }
 
 .seen-icon {
   color: #999;
   font-size: 16px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
 }
 
 .unknown-icon {
   width: 16px;
   height: 16px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
 }
 
 /* Scrollbar Styling */
@@ -245,12 +258,12 @@
 
 .pokemon-list::-webkit-scrollbar-track {
   background: #f1f1f1;
-  border-radius: 6px;
+  border-radius: 0;
 }
 
 .pokemon-list::-webkit-scrollbar-thumb {
   background: #3498db;
-  border-radius: 6px;
+  border-radius: 0;
 }
 
 .pokemon-list::-webkit-scrollbar-thumb:hover {
@@ -261,6 +274,7 @@
   background: #f1f1f1;
   border: 1px solid #ccc;
   height: 20px;
+  border-radius: 0;
 }
 
 /* Responsive Design */
