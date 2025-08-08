@@ -1,46 +1,98 @@
-# Getting Started with Create React App
+# Pokédex React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern React Pokédex built with Create React App, TypeScript, and Three.js. Features a classic Pokédex interface with 3D viewer capabilities.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- 🎮 Classic Pokédex UI design
+- 🎨 Authentic "Press Start 2P" pixel font
+- 📱 Responsive design
+- 🎯 Interactive 3D viewer with Three.js
+- 🔗 Sketchfab integration for Mew 3D model
+- ⚡ Built with Create React App
+- 🚀 Automatic GitHub Pages deployment
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **React 19** with TypeScript
+- **Create React App** for development and building
+- **Three.js** with React Three Fiber for 3D graphics
+- **CSS3** for styling
+- **GitHub Actions** for CI/CD
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+### Prerequisites
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- Node.js 18+ 
+- npm or yarn
 
-### `npm run build`
+### Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Clone the repository:
+```bash
+git clone <your-repo-url>
+cd pokedex
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. Install dependencies:
+```bash
+npm install
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Start the development server:
+```bash
+npm start
+```
 
-### `npm run eject`
+4. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Build for Production
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm run build
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Deployment
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+This project is configured for automatic deployment to GitHub Pages using GitHub Actions. Simply push to the `main` branch and the app will be deployed automatically.
 
-## Learn More
+## Project Structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+src/
+├── components/
+│   ├── Pokedex.tsx      # Main Pokédex component
+│   └── Pokedex.css      # Pokédex styling
+├── App.tsx              # Main app component
+├── App.css              # App styling
+└── index.tsx           # Entry point
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Features
+
+### Pokemon List
+- Scrollable list of Pokemon
+- Status indicators (owned, seen, unknown)
+- Click to select and view Pokemon
+
+### 3D Viewer
+- Black cube for regular Pokemon
+- Interactive Sketchfab embed for Mew
+- Orbit controls for 3D navigation
+
+### Responsive Design
+- Works on desktop and mobile devices
+- Maintains Pokédex aesthetic across screen sizes
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License.
