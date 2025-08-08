@@ -29,21 +29,21 @@ const SketchfabViewer: React.FC = () => {
         <a 
           href="https://sketchfab.com/3d-models/mew-pokemon-4c9dfbb590744368a05f1bed1fbf8d3e?utm_medium=embed&utm_campaign=share-popup&utm_content=4c9dfbb590744368a05f1bed1fbf8d3e" 
           target="_blank" 
-          rel="nofollow" 
+          rel="noreferrer" 
           style={{fontWeight: 'bold', color: '#1CAAD9'}}
         >
           Mew Pokémon
         </a> by <a 
           href="https://sketchfab.com/germydan?utm_medium=embed&utm_campaign=share-popup&utm_content=4c9dfbb590744368a05f1bed1fbf8d3e" 
           target="_blank" 
-          rel="nofollow" 
+          rel="noreferrer" 
           style={{fontWeight: 'bold', color: '#1CAAD9'}}
         >
           germydan
         </a> on <a 
           href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=4c9dfbb590744368a05f1bed1fbf8d3e" 
           target="_blank" 
-          rel="nofollow" 
+          rel="noreferrer" 
           style={{fontWeight: 'bold', color: '#1CAAD9'}}
         >
           Sketchfab
@@ -95,8 +95,8 @@ const PokemonItem: React.FC<PokemonItemProps> = ({ id, name, status, isSelected,
 // Main Pokédex Component
 const Pokedex: React.FC = () => {
   const [selectedPokemon, setSelectedPokemon] = useState(4);
-  const [seenCount, setSeenCount] = useState(12);
-  const [ownedCount, setOwnedCount] = useState(9);
+  const [seenCount] = useState(12);
+  const [ownedCount] = useState(9);
 
   const pokemonList = [
     { id: 1, name: 'Bulbasaur', status: 'owned' as const },
