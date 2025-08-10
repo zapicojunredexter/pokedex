@@ -400,9 +400,9 @@ const Pokedex: React.FC = () => {
           { 
         id: 26, 
         name: 'Raichu', 
-        status: 'unknown', 
+        status: 'seen', 
         isCaught: false, 
-        isEncountered: false,
+        isEncountered: true,
         types: ['Electric'],
         description: 'Its long tail serves as a ground to protect itself from its own electrical power.',
         habitat: 'Forests and grasslands',
@@ -432,33 +432,33 @@ const Pokedex: React.FC = () => {
     { id: 34, name: 'Nidoking', status: 'unknown', isCaught: false, isEncountered: false, types: ['Poison', 'Ground'], description: 'It uses its powerful tail in battle to smash, constrict, then break the prey\'s bones.', habitat: 'Grasslands and forests', height: '1.4 m', weight: '62.0 kg', category: 'Drill Pokémon' },
     { id: 35, name: 'Clefairy', status: 'unknown', isCaught: false, isEncountered: false, types: ['Fairy'], description: 'Its magical and cute appeal has many admirers. It is rare and found only in certain areas.', habitat: 'Mountains and caves', height: '0.6 m', weight: '7.5 kg', category: 'Fairy Pokémon' },
     { id: 36, name: 'Clefable', status: 'unknown', isCaught: false, isEncountered: false, types: ['Fairy'], description: 'A timid fairy Pokémon that is rarely seen by people. Some believe that it only appears to a person who is pure of heart.', habitat: 'Mountains and caves', height: '1.3 m', weight: '40.0 kg', category: 'Fairy Pokémon' },
-    { id: 37, name: 'Vulpix', status: 'unknown', isCaught: false, isEncountered: false, types: ['Fire'], description: 'At the time of birth, it has just one tail. The tail splits from its tip as it grows older.', habitat: 'Mountain ranges and caves', height: '0.6 m', weight: '9.9 kg', category: 'Fox Pokémon' },
+    { id: 37, name: 'Vulpix', status: 'seen', isCaught: false, isEncountered: true, types: ['Fire'], description: 'At the time of birth, it has just one tail. The tail splits from its tip as it grows older.', habitat: 'Mountain ranges and caves', height: '0.6 m', weight: '9.9 kg', category: 'Fox Pokémon' },
     { id: 38, name: 'Ninetales', status: 'unknown', isCaught: false, isEncountered: false, types: ['Fire'], description: 'Very smart and very vengeful. Grabbing one of its many tails could result in a 1000-year curse.', habitat: 'Mountain ranges and caves', height: '1.1 m', weight: '19.9 kg', category: 'Fox Pokémon' },
     { id: 39, name: 'Jigglypuff', status: 'unknown', isCaught: false, isEncountered: false, types: ['Normal', 'Fairy'], description: 'When its huge eyes light up, it sings a mysteriously soothing melody that lulls its enemies to sleep.', habitat: 'Grasslands and forests', height: '0.5 m', weight: '5.5 kg', category: 'Balloon Pokémon' },
     { id: 40, name: 'Wigglytuff', status: 'unknown', isCaught: false, isEncountered: false, types: ['Normal', 'Fairy'], description: 'The body is soft and rubbery. When angered, it will suck in air and inflate itself to an enormous size.', habitat: 'Grasslands and forests', height: '1.0 m', weight: '12.0 kg', category: 'Balloon Pokémon' },
     { id: 41, name: 'Zubat', status: 'unknown', isCaught: false, isEncountered: false, types: ['Poison', 'Flying'], description: 'Forms colonies in perpetually dark places. Uses ultrasonic waves to identify and approach targets.', habitat: 'Caves and dark places', height: '0.8 m', weight: '7.5 kg', category: 'Bat Pokémon' },
     { id: 42, name: 'Golbat', status: 'unknown', isCaught: false, isEncountered: false, types: ['Poison', 'Flying'], description: 'Once it strikes, it will not stop draining energy from the victim even if it gets too heavy to fly.', habitat: 'Caves and dark places', height: '1.6 m', weight: '55.0 kg', category: 'Bat Pokémon' },
-    { id: 43, name: 'Oddish', status: 'unknown', isCaught: false, isEncountered: false, types: ['Grass', 'Poison'], description: 'During the day, it keeps its face buried in the ground. At night, it wanders around sowing its seeds.', habitat: 'Forests and grasslands', height: '0.5 m', weight: '5.4 kg', category: 'Weed Pokémon' },
-    { id: 44, name: 'Gloom', status: 'unknown', isCaught: false, isEncountered: false, types: ['Grass', 'Poison'], description: 'The fluid that oozes from its mouth isn\'t drool. It is a nectar that is used to attract prey.', habitat: 'Forests and grasslands', height: '0.8 m', weight: '8.6 kg', category: 'Weed Pokémon' },
+    { id: 43, name: 'Oddish', status: 'seen', isCaught: false, isEncountered: true, types: ['Grass', 'Poison'], description: 'During the day, it keeps its face buried in the ground. At night, it wanders around sowing its seeds.', habitat: 'Forests and grasslands', height: '0.5 m', weight: '5.4 kg', category: 'Weed Pokémon' },
+    { id: 44, name: 'Gloom', status: 'seen', isCaught: false, isEncountered: false, types: ['Grass', 'Poison'], description: 'The fluid that oozes from its mouth isn\'t drool. It is a nectar that is used to attract prey.', habitat: 'Forests and grasslands', height: '0.8 m', weight: '8.6 kg', category: 'Weed Pokémon' },
     { id: 45, name: 'Vileplume', status: 'unknown', isCaught: false, isEncountered: false, types: ['Grass', 'Poison'], description: 'The larger its petals, the more toxic pollen it contains. Its big head is heavy and hard to hold up.', habitat: 'Forests and grasslands', height: '1.2 m', weight: '18.6 kg', category: 'Flower Pokémon' },
     { id: 46, name: 'Paras', status: 'unknown', isCaught: false, isEncountered: false, types: ['Bug', 'Grass'], description: 'Burrows to suck tree roots. The mushrooms on its back grow by drawing nutrients from the bug host.', habitat: 'Forests and grasslands', height: '0.3 m', weight: '5.4 kg', category: 'Mushroom Pokémon' },
     { id: 47, name: 'Parasect', status: 'unknown', isCaught: false, isEncountered: false, types: ['Bug', 'Grass'], description: 'A host-parasite pair in which the parasite mushroom has taken over the host bug. Prefers damp places.', habitat: 'Forests and grasslands', height: '1.0 m', weight: '29.5 kg', category: 'Mushroom Pokémon' },
-    { id: 48, name: 'Venonat', status: 'unknown', isCaught: false, isEncountered: false, types: ['Bug', 'Poison'], description: 'Lives in the shadows of tall trees where it eats insects. It is attracted by light at night.', habitat: 'Forests and grasslands', height: '1.0 m', weight: '30.0 kg', category: 'Insect Pokémon' },
+    { id: 48, name: 'Venonat', status: 'seen', isCaught: false, isEncountered: true, types: ['Bug', 'Poison'], description: 'Lives in the shadows of tall trees where it eats insects. It is attracted by light at night.', habitat: 'Forests and grasslands', height: '1.0 m', weight: '30.0 kg', category: 'Insect Pokémon' },
     { id: 49, name: 'Venomoth', status: 'unknown', isCaught: false, isEncountered: false, types: ['Bug', 'Poison'], description: 'The powdery scales on its wings are hard to remove from skin. They also contain poison that leaks out on contact.', habitat: 'Forests and grasslands', height: '1.5 m', weight: '12.5 kg', category: 'Poison Moth Pokémon' },
     { id: 50, name: 'Diglett', status: 'unknown', isCaught: false, isEncountered: false, types: ['Ground'], description: 'Lives about one yard underground where it feeds on plant roots. It sometimes appears above ground.', habitat: 'Caves and underground', height: '0.2 m', weight: '0.8 kg', category: 'Mole Pokémon' },
     { id: 51, name: 'Dugtrio', status: 'unknown', isCaught: false, isEncountered: false, types: ['Ground'], description: 'A team of Diglett triplets. It triggers huge earthquakes by burrowing 60 miles underground.', habitat: 'Caves and underground', height: '0.7 m', weight: '33.3 kg', category: 'Mole Pokémon' },
     { id: 52, name: 'Meowth', status: 'unknown', isCaught: false, isEncountered: false, types: ['Normal'], description: 'Adores circular objects. Wanders the streets on a nightly basis to look for dropped loose change.', habitat: 'Urban areas', height: '0.4 m', weight: '4.2 kg', category: 'Scratch Cat Pokémon' },
     { id: 53, name: 'Persian', status: 'unknown', isCaught: false, isEncountered: false, types: ['Normal'], description: 'Although its fur has many admirers, it is tough to raise as a pet because of its fickle meanness.', habitat: 'Urban areas', height: '1.0 m', weight: '32.0 kg', category: 'Classy Cat Pokémon' },
-    { id: 54, name: 'Psyduck', status: 'unknown', isCaught: false, isEncountered: false, types: ['Water'], description: 'Constantly troubled by headaches. It uses psychic powers when its head hurts.', habitat: 'Oceans and lakes', height: '0.8 m', weight: '19.6 kg', category: 'Duck Pokémon' },
+    { id: 54, name: 'Psyduck', status: 'seen', isCaught: false, isEncountered: true, types: ['Water'], description: 'Constantly troubled by headaches. It uses psychic powers when its head hurts.', habitat: 'Oceans and lakes', height: '0.8 m', weight: '19.6 kg', category: 'Duck Pokémon' },
     { id: 55, name: 'Golduck', status: 'unknown', isCaught: false, isEncountered: false, types: ['Water'], description: 'Often seen swimming elegantly by lake shores. It is always bothered by headaches.', habitat: 'Oceans and lakes', height: '1.7 m', weight: '76.6 kg', category: 'Duck Pokémon' },
-    { id: 56, name: 'Mankey', status: 'unknown', isCaught: false, isEncountered: false, types: ['Fighting'], description: 'Extremely quick to anger. It could be docile one moment then thrashing away the next instant.', habitat: 'Mountain ranges and forests', height: '0.5 m', weight: '28.0 kg', category: 'Pig Monkey Pokémon' },
+    { id: 56, name: 'Mankey', status: 'seen', isCaught: false, isEncountered: true, types: ['Fighting'], description: 'Extremely quick to anger. It could be docile one moment then thrashing away the next instant.', habitat: 'Mountain ranges and forests', height: '0.5 m', weight: '28.0 kg', category: 'Pig Monkey Pokémon' },
     { id: 57, name: 'Primeape', status: 'unknown', isCaught: false, isEncountered: false, types: ['Fighting'], description: 'Always furious and tenacious to the extreme. Anger is said to make it even stronger.', habitat: 'Mountain ranges and forests', height: '1.0 m', weight: '32.0 kg', category: 'Pig Monkey Pokémon' },
-    { id: 58, name: 'Growlithe', status: 'unknown', isCaught: false, isEncountered: false, types: ['Fire'], description: 'Very protective of its territory. It will bark and bite to repel intruders from its space.', habitat: 'Mountain ranges and grasslands', height: '0.7 m', weight: '19.0 kg', category: 'Puppy Pokémon' },
-    { id: 59, name: 'Arcanine', status: 'unknown', isCaught: false, isEncountered: false, types: ['Fire'], description: 'A Pokémon that has been admired since the past for its beauty. It runs agilely as if on wings.', habitat: 'Mountain ranges and grasslands', height: '1.9 m', weight: '155.0 kg', category: 'Legendary Pokémon' },
+    { id: 58, name: 'Growlithe', status: 'seen', isCaught: false, isEncountered: true, types: ['Fire'], description: 'Very protective of its territory. It will bark and bite to repel intruders from its space.', habitat: 'Mountain ranges and grasslands', height: '0.7 m', weight: '19.0 kg', category: 'Puppy Pokémon' },
+    { id: 59, name: 'Arcanine', status: 'seen', isCaught: false, isEncountered: true, types: ['Fire'], description: 'A Pokémon that has been admired since the past for its beauty. It runs agilely as if on wings.', habitat: 'Mountain ranges and grasslands', height: '1.9 m', weight: '155.0 kg', category: 'Legendary Pokémon' },
     { id: 60, name: 'Poliwag', status: 'unknown', isCaught: false, isEncountered: false, types: ['Water'], description: 'Its newly born legs don\'t have strength yet, so it stands unsteadily. However, it can swim from birth.', habitat: 'Oceans and lakes', height: '0.6 m', weight: '12.4 kg', category: 'Tadpole Pokémon' },
     { id: 61, name: 'Poliwhirl', status: 'unknown', isCaught: false, isEncountered: false, types: ['Water'], description: 'Capable of living in or out of water. When out of water, it sweats to keep its body slimy.', habitat: 'Oceans and lakes', height: '1.0 m', weight: '20.0 kg', category: 'Tadpole Pokémon' },
     { id: 62, name: 'Poliwrath', status: 'unknown', isCaught: false, isEncountered: false, types: ['Water', 'Fighting'], description: 'An adept swimmer at both the front crawl and breast stroke. Easily overtakes the best human swimmers.', habitat: 'Oceans and lakes', height: '1.3 m', weight: '54.0 kg', category: 'Tadpole Pokémon' },
-    { id: 63, name: 'Abra', status: 'unknown', isCaught: false, isEncountered: false, types: ['Psychic'], description: 'Using its ability to read minds, it will identify impending danger and teleport to safety.', habitat: 'Urban areas and grasslands', height: '0.9 m', weight: '19.5 kg', category: 'Psi Pokémon' },
+    { id: 63, name: 'Abra', status: 'seen', isCaught: false, isEncountered: true, types: ['Psychic'], description: 'Using its ability to read minds, it will identify impending danger and teleport to safety.', habitat: 'Urban areas and grasslands', height: '0.9 m', weight: '19.5 kg', category: 'Psi Pokémon' },
     { id: 64, name: 'Kadabra', status: 'unknown', isCaught: false, isEncountered: false, types: ['Psychic'], description: 'It emits special alpha waves from its body that induce headaches just by being nearby.', habitat: 'Urban areas and grasslands', height: '1.3 m', weight: '56.5 kg', category: 'Psi Pokémon' },
     { id: 65, name: 'Alakazam', status: 'unknown', isCaught: false, isEncountered: false, types: ['Psychic'], description: 'Its brain can outperform a supercomputer. Its IQ is said to be around 5,000.', habitat: 'Urban areas and grasslands', height: '1.5 m', weight: '48.0 kg', category: 'Psi Pokémon' },
     { id: 66, name: 'Machop', status: 'unknown', isCaught: false, isEncountered: false, types: ['Fighting'], description: 'Loves to build its muscles. It trains in all styles of martial arts to become even stronger.', habitat: 'Mountain ranges and caves', height: '0.8 m', weight: '19.5 kg', category: 'Superpower Pokémon' },
@@ -472,8 +472,8 @@ const Pokedex: React.FC = () => {
     { id: 74, name: 'Geodude', status: 'unknown', isCaught: false, isEncountered: false, types: ['Rock', 'Ground'], description: 'Found in fields and mountains. Mistaking them for boulders, people often step or trip on them.', habitat: 'Mountain ranges and caves', height: '0.4 m', weight: '20.0 kg', category: 'Rock Pokémon' },
     { id: 75, name: 'Graveler', status: 'unknown', isCaught: false, isEncountered: false, types: ['Rock', 'Ground'], description: 'Rolls down slopes to move. It rolls over any obstacle without slowing or changing its direction.', habitat: 'Mountain ranges and caves', height: '1.0 m', weight: '105.0 kg', category: 'Rock Pokémon' },
     { id: 76, name: 'Golem', status: 'unknown', isCaught: false, isEncountered: false, types: ['Rock', 'Ground'], description: 'Its boulder-like body is extremely hard. It can easily withstand dynamite blasts without damage.', habitat: 'Mountain ranges and caves', height: '1.4 m', weight: '300.0 kg', category: 'Megaton Pokémon' },
-    { id: 77, name: 'Ponyta', status: 'unknown', isCaught: false, isEncountered: false, types: ['Fire'], description: 'Its hooves are 10 times harder than diamonds. It can trample anything completely flat in little time.', habitat: 'Grasslands and plains', height: '1.0 m', weight: '30.0 kg', category: 'Fire Horse Pokémon' },
-    { id: 78, name: 'Rapidash', status: 'unknown', isCaught: false, isEncountered: false, types: ['Fire'], description: 'Very competitive, this Pokémon will chase anything that moves fast in the hopes of racing it.', habitat: 'Grasslands and plains', height: '1.7 m', weight: '95.0 kg', category: 'Fire Horse Pokémon' },
+    { id: 77, name: 'Ponyta', status: 'seen', isCaught: false, isEncountered: true, types: ['Fire'], description: 'Its hooves are 10 times harder than diamonds. It can trample anything completely flat in little time.', habitat: 'Grasslands and plains', height: '1.0 m', weight: '30.0 kg', category: 'Fire Horse Pokémon' },
+    { id: 78, name: 'Rapidash', status: 'seen', isCaught: false, isEncountered: true, types: ['Fire'], description: 'Very competitive, this Pokémon will chase anything that moves fast in the hopes of racing it.', habitat: 'Grasslands and plains', height: '1.7 m', weight: '95.0 kg', category: 'Fire Horse Pokémon' },
     { id: 79, name: 'Slowpoke', status: 'unknown', isCaught: false, isEncountered: false, types: ['Water', 'Psychic'], description: 'Incredibly slow and dopey. It takes 5 seconds for it to feel pain when under attack.', habitat: 'Oceans and lakes', height: '1.2 m', weight: '36.0 kg', category: 'Dopey Pokémon' },
     { id: 80, name: 'Slowbro', status: 'unknown', isCaught: false, isEncountered: false, types: ['Water', 'Psychic'], description: 'The Shellder that latches onto Slowpoke\'s tail is said to feed on the host\'s left-over scraps.', habitat: 'Oceans and lakes', height: '1.6 m', weight: '78.5 kg', category: 'Hermit Crab Pokémon' },
     { id: 81, name: 'Magnemite', status: 'unknown', isCaught: false, isEncountered: false, types: ['Electric', 'Steel'], description: 'Uses anti-gravity to stay suspended. Appears without warning and uses Thunder Wave and similar moves.', habitat: 'Urban areas and power plants', height: '0.3 m', weight: '6.0 kg', category: 'Magnet Pokémon' },
@@ -900,7 +900,7 @@ const Pokedex: React.FC = () => {
                       frameBorder="0" 
                       allowFullScreen 
                       allow="autoplay; fullscreen; xr-spatial-tracking" 
-                      src="https://sketchfab.com/models/273766237c614ab1bbaf094c9fc72a3e/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                      src="https://sketchfab.com/models/5c8c8c8c8c8c8c8c8c8c8c8c8c8c8c8c/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
                       onLoad={() => console.log('Model 25 loaded')}
                       {...{
                         'mozallowfullscreen': 'true',
@@ -911,6 +911,96 @@ const Pokedex: React.FC = () => {
                         'web-share': 'true'
                       } as any}>
                     </iframe>
+                  </div>
+                )}
+
+                {selectedPokemonData?.id === 26 && (
+                  <div className="sketchfab-embed-wrapper">
+                    <iframe 
+                      title="Raichu" 
+                      frameBorder="0" 
+                      allowFullScreen 
+                      allow="autoplay; fullscreen; xr-spatial-tracking" 
+                      src="https://sketchfab.com/models/d2d314d1f02a409a834cbb637b66f92a/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                      onLoad={() => console.log('Model 26 loaded')}
+                      {...{
+                        'mozallowfullscreen': 'true',
+                        'webkitallowfullscreen': 'true',
+                        'xr-spatial-tracking': 'true',
+                        'execution-while-out-of-viewport': 'true',
+                        'execution-while-not-rendered': 'true',
+                        'web-share': 'true'
+                      } as any}>
+                    </iframe>
+                    <p style={{fontSize: '13px', fontWeight: 'normal', margin: '5px', color: '#4A4A4A'}}>
+                      <a href="https://sketchfab.com/3d-models/raichu-d2d314d1f02a409a834cbb637b66f92a?utm_medium=embed&utm_campaign=share-popup&utm_content=d2d314d1f02a409a834cbb637b66f92a" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        Raichu
+                      </a> by <a href="https://sketchfab.com/nguyenlouis32?utm_medium=embed&utm_campaign=share-popup&utm_content=d2d314d1f02a409a834cbb637b66f92a" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        nguyenlouis32
+                      </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=d2d314d1f02a409a834cbb637b66f92a" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        Sketchfab
+                      </a>
+                    </p>
+                  </div>
+                )}
+
+                {selectedPokemonData?.id === 58 && (
+                  <div className="sketchfab-embed-wrapper">
+                    <iframe 
+                      title="Growlithe - Pokémon Super Mystery Dungeon" 
+                      frameBorder="0" 
+                      allowFullScreen 
+                      allow="autoplay; fullscreen; xr-spatial-tracking" 
+                      src="https://sketchfab.com/models/8e796b5972ff454e89ab4f1a94a838af/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                      onLoad={() => console.log('Model 58 loaded')}
+                      {...{
+                        'mozallowfullscreen': 'true',
+                        'webkitallowfullscreen': 'true',
+                        'xr-spatial-tracking': 'true',
+                        'execution-while-out-of-viewport': 'true',
+                        'execution-while-not-rendered': 'true',
+                        'web-share': 'true'
+                      } as any}>
+                    </iframe>
+                    <p style={{fontSize: '13px', fontWeight: 'normal', margin: '5px', color: '#4A4A4A'}}>
+                                              <a href="https://sketchfab.com/3d-models/growlithe-pokemon-super-mystery-dungeon-8e796b5972ff454e89ab4f1a94a838af?utm_medium=embed&utm_campaign=share-popup&utm_content=8e796b5972ff454e89ab4f1a94a838af" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        Growlithe - Pokémon Super Mystery Dungeon
+                      </a> by <a href="https://sketchfab.com/drewsdigitaldesigns?utm_medium=embed&utm_campaign=share-popup&utm_content=8e796b5972ff454e89ab4f1a94a838af" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        DrewsDigitalDesigns
+                      </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=8e796b5972ff454e89ab4f1a94a838af" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        Sketchfab
+                      </a>
+                    </p>
+                  </div>
+                )}
+
+                {selectedPokemonData?.id === 59 && (
+                  <div className="sketchfab-embed-wrapper">
+                    <iframe 
+                      title="Arcanine" 
+                      frameBorder="0" 
+                      allowFullScreen 
+                      allow="autoplay; fullscreen; xr-spatial-tracking" 
+                      src="https://sketchfab.com/models/82c02a3bc6294f94b4423ae454a7b2aa/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                      onLoad={() => console.log('Model 59 loaded')}
+                      {...{
+                        'mozallowfullscreen': 'true',
+                        'webkitallowfullscreen': 'true',
+                        'xr-spatial-tracking': 'true',
+                        'execution-while-out-of-viewport': 'true',
+                        'execution-while-not-rendered': 'true',
+                        'web-share': 'true'
+                      } as any}>
+                    </iframe>
+                    <p style={{fontSize: '13px', fontWeight: 'normal', margin: '5px', color: '#4A4A4A'}}>
+                      <a href="https://sketchfab.com/3d-models/arcanine-82c02a3bc6294f94b4423ae454a7b2aa?utm_medium=embed&utm_campaign=share-popup&utm_content=82c02a3bc6294f94b4423ae454a7b2aa" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        Arcanine
+                      </a> by <a href="https://sketchfab.com/nguyenlouis32?utm_medium=embed&utm_campaign=share-popup&utm_content=82c02a3bc6294f94b4423ae454a7b2aa" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        nguyenlouis32
+                                              </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=82c02a3bc6294f94b4423ae454a7b2aa" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        Sketchfab
+                      </a>
+                    </p>
                   </div>
                 )}
 
@@ -998,8 +1088,279 @@ const Pokedex: React.FC = () => {
                   </div>
                 )}
 
+                {/* New Pokemon 3D Models */}
+                {selectedPokemonData?.id === 37 && (
+                  <div className="sketchfab-embed-wrapper">
+                    <iframe 
+                      title="Vulpix" 
+                      frameBorder="0" 
+                      allowFullScreen 
+                      allow="autoplay; fullscreen; xr-spatial-tracking" 
+                      src="https://sketchfab.com/models/e58822817c9948e7b101997e4cff7c1d/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                      onLoad={() => console.log('Model 37 loaded')}
+                      {...{
+                        'mozallowfullscreen': 'true',
+                        'webkitallowfullscreen': 'true',
+                        'xr-spatial-tracking': 'true',
+                        'execution-while-out-of-viewport': 'true',
+                        'execution-while-not-rendered': 'true',
+                        'web-share': 'true'
+                      } as any}>
+                    </iframe>
+                    <p style={{fontSize: '13px', fontWeight: 'normal', margin: '5px', color: '#4A4A4A'}}>
+                      <a href="https://sketchfab.com/3d-models/vulpix-e58822817c9948e7b101997e4cff7c1d?utm_medium=embed&utm_campaign=share-popup&utm_content=e58822817c9948e7b101997e4cff7c1d" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        Vulpix
+                      </a> by <a href="https://sketchfab.com/nguyenlouis32?utm_medium=embed&utm_campaign=share-popup&utm_content=e58822817c9948e7b101997e4cff7c1d" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        nguyenlouis32
+                      </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=e58822817c9948e7b101997e4cff7c1d" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        Sketchfab
+                      </a>
+                    </p>
+                  </div>
+                )}
+
+                {selectedPokemonData?.id === 43 && (
+                  <div className="sketchfab-embed-wrapper">
+                    <iframe 
+                      title="0043-Oddish" 
+                      frameBorder="0" 
+                      allowFullScreen 
+                      allow="autoplay; fullscreen; xr-spatial-tracking" 
+                      src="https://sketchfab.com/models/32fd4824a1a442a3b2592ae0a85ff5c5/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                      onLoad={() => console.log('Model 43 loaded')}
+                      {...{
+                        'mozallowfullscreen': 'true',
+                        'webkitallowfullscreen': 'true',
+                        'xr-spatial-tracking': 'true',
+                        'execution-while-out-of-viewport': 'true',
+                        'execution-while-not-rendered': 'true',
+                        'web-share': 'true'
+                      } as any}>
+                    </iframe>
+                    <p style={{fontSize: '13px', fontWeight: 'normal', margin: '5px', color: '#4A4A4A'}}>
+                      <a href="https://sketchfab.com/3d-models/0043-oddish-32fd4824a1a442a3b2592ae0a85ff5c5?utm_medium=embed&utm_campaign=share-popup&utm_content=32fd4824a1a442a3b2592ae0a85ff5c5" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        0043-Oddish
+                      </a> by <a href="https://sketchfab.com/Sonic_40?utm_medium=embed&utm_campaign=share-popup&utm_content=32fd4824a1a442a3b2592ae0a85ff5c5" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        Sonic_40
+                      </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=32fd4824a1a442a3b2592ae0a85ff5c5" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        Sketchfab
+                      </a>
+                    </p>
+                  </div>
+                )}
+
+                {selectedPokemonData?.id === 44 && (
+                  <div className="sketchfab-embed-wrapper">
+                    <iframe 
+                      title="Gloom" 
+                      frameBorder="0" 
+                      allowFullScreen 
+                      allow="autoplay; fullscreen; xr-spatial-tracking" 
+                      src="https://sketchfab.com/models/50aeedd7a27f4de394f6dd75080f8d6c/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                      onLoad={() => console.log('Model 44 loaded')}
+                      {...{
+                        'mozallowfullscreen': 'true',
+                        'webkitallowfullscreen': 'true',
+                        'xr-spatial-tracking': 'true',
+                        'execution-while-out-of-viewport': 'true',
+                        'execution-while-not-rendered': 'true',
+                        'web-share': 'true'
+                      } as any}>
+                    </iframe>
+                    <p style={{fontSize: '13px', fontWeight: 'normal', margin: '5px', color: '#4A4A4A'}}>
+                      <a href="https://sketchfab.com/3d-models/gloom-50aeedd7a27f4de394f6dd75080f8d6c?utm_medium=embed&utm_campaign=share-popup&utm_content=50aeedd7a27f4de394f6dd75080f8d6c" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        Gloom
+                      </a> by <a href="https://sketchfab.com/nguyenlouis32?utm_medium=embed&utm_campaign=share-popup&utm_content=50aeedd7a27f4de394f6dd75080f8d6c" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        nguyenlouis32
+                      </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=50aeedd7a27f4de394f6dd75080f8d6c" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        Sketchfab
+                      </a>
+                    </p>
+                  </div>
+                )}
+
+                {selectedPokemonData?.id === 48 && (
+                  <div className="sketchfab-embed-wrapper">
+                    <iframe 
+                      title="Venonat" 
+                      frameBorder="0" 
+                      allowFullScreen 
+                      allow="autoplay; fullscreen; xr-spatial-tracking" 
+                      src="https://sketchfab.com/models/c162884e92304c12bad83122fca53282/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                      onLoad={() => console.log('Model 48 loaded')}
+                      {...{
+                        'mozallowfullscreen': 'true',
+                        'webkitallowfullscreen': 'true',
+                        'xr-spatial-tracking': 'true',
+                        'execution-while-out-of-viewport': 'true',
+                        'execution-while-not-rendered': 'true',
+                        'web-share': 'true'
+                      } as any}>
+                    </iframe>
+                    <p style={{fontSize: '13px', fontWeight: 'normal', margin: '5px', color: '#4A4A4A'}}>
+                      <a href="https://sketchfab.com/3d-models/venonat-c162884e92304c12bad83122fca53282?utm_medium=embed&utm_campaign=share-popup&utm_content=c162884e92304c12bad83122fca53282" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        Venonat
+                      </a> by <a href="https://sketchfab.com/nguyenlouis32?utm_medium=embed&utm_campaign=share-popup&utm_content=c162884e92304c12bad83122fca53282" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        nguyenlouis32
+                      </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=c162884e92304c12bad83122fca53282" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        Sketchfab
+                      </a>
+                    </p>
+                  </div>
+                )}
+
+                {selectedPokemonData?.id === 54 && (
+                  <div className="sketchfab-embed-wrapper">
+                    <iframe 
+                      title="Psyduck" 
+                      frameBorder="0" 
+                      allowFullScreen 
+                      allow="autoplay; fullscreen; xr-spatial-tracking" 
+                      src="https://sketchfab.com/models/fb1fc117788d41c3840f90143095fc5f/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                      onLoad={() => console.log('Model 54 loaded')}
+                      {...{
+                        'mozallowfullscreen': 'true',
+                        'webkitallowfullscreen': 'true',
+                        'xr-spatial-tracking': 'true',
+                        'execution-while-out-of-viewport': 'true',
+                        'execution-while-not-rendered': 'true',
+                        'web-share': 'true'
+                      } as any}>
+                    </iframe>
+                    <p style={{fontSize: '13px', fontWeight: 'normal', margin: '5px', color: '#4A4A4A'}}>
+                      <a href="https://sketchfab.com/3d-models/psyduck-fb1fc117788d41c3840f90143095fc5f?utm_medium=embed&utm_campaign=share-popup&utm_content=fb1fc117788d41c3840f90143095fc5f" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        Psyduck
+                      </a> by <a href="https://sketchfab.com/nguyenlouis32?utm_medium=embed&utm_campaign=share-popup&utm_content=fb1fc117788d41c3840f90143095fc5f" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        nguyenlouis32
+                      </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=fb1fc117788d41c3840f90143095fc5f" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        Sketchfab
+                      </a>
+                    </p>
+                  </div>
+                )}
+
+                {selectedPokemonData?.id === 56 && (
+                  <div className="sketchfab-embed-wrapper">
+                    <iframe 
+                      title="Mankey" 
+                      frameBorder="0" 
+                      allowFullScreen 
+                      allow="autoplay; fullscreen; xr-spatial-tracking" 
+                      src="https://sketchfab.com/models/1f6bbb8582464a2c989cb9255846a20e/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                      onLoad={() => console.log('Model 56 loaded')}
+                      {...{
+                        'mozallowfullscreen': 'true',
+                        'webkitallowfullscreen': 'true',
+                        'xr-spatial-tracking': 'true',
+                        'execution-while-out-of-viewport': 'true',
+                        'execution-while-not-rendered': 'true',
+                        'web-share': 'true'
+                      } as any}>
+                    </iframe>
+                    <p style={{fontSize: '13px', fontWeight: 'normal', margin: '5px', color: '#4A4A4A'}}>
+                      <a href="https://sketchfab.com/3d-models/mankey-1f6bbb8582464a2c989cb9255846a20e?utm_medium=embed&utm_campaign=share-popup&utm_content=1f6bbb8582464a2c989cb9255846a20e" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        Mankey
+                      </a> by <a href="https://sketchfab.com/nguyenlouis32?utm_medium=embed&utm_campaign=share-popup&utm_content=1f6bbb8582464a2c989cb9255846a20e" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        siouxsiepikachu
+                      </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=1f6bbb8582464a2c989cb9255846a20e" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        Sketchfab
+                      </a>
+                    </p>
+                  </div>
+                )}
+
+                {selectedPokemonData?.id === 63 && (
+                  <div className="sketchfab-embed-wrapper">
+                    <iframe 
+                      title="Abra" 
+                      frameBorder="0" 
+                      allowFullScreen 
+                      allow="autoplay; fullscreen; xr-spatial-tracking" 
+                      src="https://sketchfab.com/models/33299f8e3a9e4cd2b0717fd6c121c3c8/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                      onLoad={() => console.log('Model 63 loaded')}
+                      {...{
+                        'mozallowfullscreen': 'true',
+                        'webkitallowfullscreen': 'true',
+                        'xr-spatial-tracking': 'true',
+                        'execution-while-out-of-viewport': 'true',
+                        'execution-while-not-rendered': 'true',
+                        'web-share': 'true'
+                      } as any}>
+                    </iframe>
+                    <p style={{fontSize: '13px', fontWeight: 'normal', margin: '5px', color: '#4A4A4A'}}>
+                      <a href="https://sketchfab.com/3d-models/abra-33299f8e3a9e4cd2b0717fd6c121c3c8?utm_medium=embed&utm_campaign=share-popup&utm_content=33299f8e3a9e4cd2b0717fd6c121c3c8" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        Abra
+                      </a> by <a href="https://sketchfab.com/nguyenlouis32?utm_medium=embed&utm_campaign=share-popup&utm_content=33299f8e3a9e4cd2b0717fd6c121c3c8" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        nguyenlouis32
+                      </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=33299f8e3a9e4cd2b0717fd6c121c3c8" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        Sketchfab
+                      </a>
+                    </p>
+                  </div>
+                )}
+
+                {selectedPokemonData?.id === 77 && (
+                  <div className="sketchfab-embed-wrapper">
+                    <iframe 
+                      title="Ponyta - Pokemon" 
+                      frameBorder="0" 
+                      allowFullScreen 
+                      allow="autoplay; fullscreen; xr-spatial-tracking" 
+                      src="https://sketchfab.com/models/b8c7ba29095448b8a95dcbc940721d43/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                      onLoad={() => console.log('Model 77 loaded')}
+                      {...{
+                        'mozallowfullscreen': 'true',
+                        'webkitallowfullscreen': 'true',
+                        'xr-spatial-tracking': 'true',
+                        'execution-while-out-of-viewport': 'true',
+                        'execution-while-not-rendered': 'true',
+                        'web-share': 'true'
+                      } as any}>
+                    </iframe>
+                    <p style={{fontSize: '13px', fontWeight: 'normal', margin: '5px', color: '#4A4A4A'}}>
+                      <a href="https://sketchfab.com/3d-models/ponyta-pokemon-b8c7ba29095448b8a95dcbc940721d43?utm_medium=embed&utm_campaign=share-popup&utm_content=b8c7ba29095448b8a95dcbc940721d43" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        Ponyta - Pokemon
+                      </a> by <a href="https://sketchfab.com/31schrci?utm_medium=embed&utm_campaign=share-popup&utm_content=b8c7ba29095448b8a95dcbc940721d43" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        31schrci
+                      </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=b8c7ba29095448b8a95dcbc940721d43" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        Sketchfab
+                      </a>
+                    </p>
+                  </div>
+                )}
+
+                {selectedPokemonData?.id === 78 && (
+                  <div className="sketchfab-embed-wrapper">
+                    <iframe 
+                      title="Rapidash" 
+                      frameBorder="0" 
+                      allowFullScreen 
+                      allow="autoplay; fullscreen; xr-spatial-tracking" 
+                      src="https://sketchfab.com/models/9eddfe1733c447a48f3890459ce2acdc/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                      onLoad={() => console.log('Model 78 loaded')}
+                      {...{
+                        'mozallowfullscreen': 'true',
+                        'webkitallowfullscreen': 'true',
+                        'xr-spatial-tracking': 'true',
+                        'execution-while-out-of-viewport': 'true',
+                        'execution-while-not-rendered': 'true',
+                        'web-share': 'true'
+                      } as any}>
+                    </iframe>
+                    <p style={{fontSize: '13px', fontWeight: 'normal', margin: '5px', color: '#4A4A4A'}}>
+                      <a href="https://sketchfab.com/3d-models/rapidash-9eddfe1733c447a48f3890459ce2acdc?utm_medium=embed&utm_campaign=share-popup&utm_content=9eddfe1733c447a48f3890459ce2acdc" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        Rapidash
+                      </a> by <a href="https://sketchfab.com/illupo?utm_medium=embed&utm_campaign=share-popup&utm_content=9eddfe1733c447a48f3890459ce2acdc" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        illupo
+                      </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=9eddfe1733c447a48f3890459ce2acdc" target="_blank" rel="nofollow" style={{fontWeight: 'bold', color: '#1CAAD9'}}>
+                        Sketchfab
+                      </a>
+                    </p>
+                  </div>
+                )}
+
                 {/* Placeholder Image for Other Pokemon */}
-                {(!selectedPokemonData || ![1, 2, 4, 5, 7, 8, 9, 15, 16, 18, 20, 25, 133, 143, 144, 150].includes(selectedPokemonData.id)) && (
+                {(!selectedPokemonData || ![1, 2, 4, 5, 7, 8, 9, 15, 16, 18, 20, 25, 26, 37, 43, 44, 48, 54, 56, 58, 59, 63, 77, 78, 133, 143, 144, 150].includes(selectedPokemonData.id)) && (
                   <div className="pokemon-image-container">
                     <img
                       src={`${process.env.PUBLIC_URL || ''}/empty.png`}
