@@ -41,20 +41,22 @@
 .pokedex-body {
   display: flex;
   flex: 1;
-  background: #f0f0f0;
+  background: url('../../public/grid.png') repeat;
   border-radius: 0;
+  min-height: 0;
+  overflow: hidden;
 }
 
 /* Left Panel */
 .pokedex-left-panel {
   flex: 1;
-  background: white;
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  border-right: 2px solid #ccc;
   position: relative;
+  min-height: 0;
+  overflow: hidden;
 }
 
 /* Pokemon Name Display */
@@ -107,11 +109,7 @@
 /* Pokemon Viewer (Image Display) */
 .pokemon-viewer {
   flex: 1;
-  background: 
-    linear-gradient(rgba(100, 100, 100, 0.8) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(100, 100, 100, 0.8) 1px, transparent 1px);
-  background-size: 12px 12px;
-  background-color: #f0f0f0;
+  background: transparent;
   border: 3px solid #666;
   border-radius: 4px;
   box-shadow: 
@@ -122,6 +120,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  min-height: 0;
 }
 
 /* Pokemon Image Container */
@@ -224,10 +223,12 @@
 /* Right Panel */
 .pokedex-right-panel {
   flex: 1;
-  background: white;
-  padding: 15px;
+  width: 300px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
 }
 
 /* Pokemon List */

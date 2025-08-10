@@ -16,22 +16,6 @@ const PokemonImage: React.FC<{ pokemonId: number }> = ({ pokemonId }) => {
   );
 };
 
-// Sketchfab Viewer Component
-const SketchfabViewer: React.FC = () => {
-  return (
-    <div className="sketchfab-embed-wrapper">
-      <iframe 
-        title="Mew Pokémon" 
-        frameBorder="0" 
-        allowFullScreen 
-        allow="autoplay; fullscreen; xr-spatial-tracking" 
-        src="https://sketchfab.com/models/4c9dfbb590744368a05f1bed1fbf8d3e/embed?autostart=1&preload=1&ui_controls=1&ui_infos=0&ui_inspector=0&ui_stop=0&ui_watermark=0&ui_watermark_link=0&ui_ar=0&ui_help=0&ui_settings=0&ui_vr=0&ui_fullscreen=0&ui_animations=0&transparent=1"
-        style={{width: '100%', height: '100%', border: 'none'}}
-      />
-    </div>
-  );
-};
-
 // Pokemon List Item Component
 interface PokemonItemProps {
   id: number;
@@ -112,26 +96,18 @@ const Pokedex: React.FC = () => {
   return (
     <div className="pokedex-container">
       <div className="pokedex-header">
-        <h1>Kanto Pokédex</h1>
+        <h1>KANTO POKÉDEX</h1>
       </div>
-      
       <div className="pokedex-body">
-        {/* Left Panel - Pokemon Display */}
         <div className="pokedex-left-panel">
           <div className="pokemon-name-display">
             <div className="name-content">
               {selectedPokemonData?.name || 'Unknown'}
             </div>
           </div>
-          
           <div className="pokemon-viewer">
-            {selectedPokemon === 151 ? (
-              <SketchfabViewer />
-            ) : (
-              <PokemonImage pokemonId={selectedPokemon} />
-            )}
+            <PokemonImage pokemonId={selectedPokemon} />
           </div>
-          
           <div className="pokemon-stats">
             <div className="stats-content">
               <div>Seen: {seenCount}</div>
@@ -139,8 +115,6 @@ const Pokedex: React.FC = () => {
             </div>
           </div>
         </div>
-        
-        {/* Right Panel - Pokemon List */}
         <div className="pokedex-right-panel">
           <div className="pokemon-list">
             {pokemonList.map((pokemon) => (
