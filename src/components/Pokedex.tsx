@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import './Pokedex.css';
 
 // Pokemon List Item Component
@@ -57,12 +57,10 @@ interface PokemonData {
 
 // Main Pokédex Component
 const Pokedex: React.FC = () => {
-  const [selectedPokemon, setSelectedPokemon] = useState(4);
-  const [seenCount] = useState(12);
-  const [ownedCount] = useState(9);
+  const [selectedPokemon, setSelectedPokemon] = useState<number | null>(7); // Set Squirtle as default
+  const [isLoading, setIsLoading] = useState(true);
 
-  // Pokemon data array for easy updates
-  const pokemonList: PokemonData[] = [
+  const pokemonList: PokemonData[] = useMemo(() => [
     { id: 1, name: 'Bulbasaur', status: 'owned', isCaught: true, isEncountered: true },
     { id: 2, name: 'Ivysaur', status: 'owned', isCaught: true, isEncountered: true },
     { id: 3, name: 'Venusaur', status: 'unknown', isCaught: false, isEncountered: false },
@@ -73,9 +71,28 @@ const Pokedex: React.FC = () => {
     { id: 8, name: 'Wartortle', status: 'seen', isCaught: false, isEncountered: true },
     { id: 9, name: 'Blastoise', status: 'seen', isCaught: false, isEncountered: true },
     { id: 10, name: 'Caterpie', status: 'unknown', isCaught: false, isEncountered: false },
-  ];
+  ], []);
 
-  const selectedPokemonData = pokemonList.find(p => p.id === selectedPokemon);
+  const selectedPokemonData = selectedPokemon ? pokemonList.find(p => p.id === selectedPokemon) : null;
+
+  const seenCount = pokemonList.filter(p => p.isEncountered).length;
+  const ownedCount = pokemonList.filter(p => p.isCaught).length;
+
+  useEffect(() => {
+    if (selectedPokemon) {
+      setIsLoading(true);
+      // Add a small delay to prevent flickering
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 100); // Reduced delay to 100ms for smoother transitions
+      
+      return () => clearTimeout(timer);
+    }
+  }, [selectedPokemon]);
+
+  const handlePokemonSelect = (id: number) => {
+    setSelectedPokemon(id);
+  };
 
   return (
     <div className="pokedex-container">
@@ -91,149 +108,174 @@ const Pokedex: React.FC = () => {
           </div>
           {/* Pokemon Viewer */}
           <div className="pokemon-viewer">
-            {/* Bulbasaur 3D Model */}
-            <div className={`sketchfab-embed-wrapper ${selectedPokemonData?.id === 1 ? 'active' : 'hidden'}`}>
-              <iframe 
-                title="Bulbasaur - Pokemon" 
-                frameBorder="0" 
-                allowFullScreen 
-                allow="autoplay; fullscreen; xr-spatial-tracking" 
-                src="https://sketchfab.com/models/853e861e891047c0883860db627adb35/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
-                {...{
-                  'mozallowfullscreen': 'true',
-                  'webkitallowfullscreen': 'true',
-                  'xr-spatial-tracking': 'true',
-                  'execution-while-out-of-viewport': 'true',
-                  'execution-while-not-rendered': 'true',
-                  'web-share': 'true'
-                } as any}>
-              </iframe>
-            </div>
+            {isLoading ? (
+              <div className="loading-container">
+                <div className="loading-spinner"></div>
+              </div>
+            ) : (
+              <>
+                {/* Conditional rendering of 3D models - only render the selected one */}
+                {selectedPokemonData?.id === 1 && (
+                  <div className="sketchfab-embed-wrapper">
+                    <iframe 
+                      title="Bulbasaur - Pokemon" 
+                      frameBorder="0" 
+                      allowFullScreen 
+                      allow="autoplay; fullscreen; xr-spatial-tracking" 
+                      src="https://sketchfab.com/models/853e861e891047c0883860db627adb35/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                      onLoad={() => console.log('Model 1 loaded')}
+                      {...{
+                        'mozallowfullscreen': 'true',
+                        'webkitallowfullscreen': 'true',
+                        'xr-spatial-tracking': 'true',
+                        'execution-while-out-of-viewport': 'true',
+                        'execution-while-not-rendered': 'true',
+                        'web-share': 'true'
+                      } as any}>
+                    </iframe>
+                  </div>
+                )}
 
-            {/* Ivysaur 3D Model */}
-            <div className={`sketchfab-embed-wrapper ${selectedPokemonData?.id === 2 ? 'active' : 'hidden'}`}>
-              <iframe 
-                title="Ivysaur" 
-                frameBorder="0" 
-                allowFullScreen 
-                allow="autoplay; fullscreen; xr-spatial-tracking" 
-                src="https://sketchfab.com/models/16174087ee1b44bbabf5858aee8592aa/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
-                {...{
-                  'mozallowfullscreen': 'true',
-                  'webkitallowfullscreen': 'true',
-                  'xr-spatial-tracking': 'true',
-                  'execution-while-out-of-viewport': 'true',
-                  'execution-while-not-rendered': 'true',
-                  'web-share': 'true'
-                } as any}>
-              </iframe>
-            </div>
+                {selectedPokemonData?.id === 2 && (
+                  <div className="sketchfab-embed-wrapper">
+                    <iframe 
+                      title="Ivysaur" 
+                      frameBorder="0" 
+                      allowFullScreen 
+                      allow="autoplay; fullscreen; xr-spatial-tracking" 
+                      src="https://sketchfab.com/models/16174087ee1b44bbabf5858aee8592aa/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                      onLoad={() => console.log('Model 2 loaded')}
+                      {...{
+                        'mozallowfullscreen': 'true',
+                        'webkitallowfullscreen': 'true',
+                        'xr-spatial-tracking': 'true',
+                        'execution-while-out-of-viewport': 'true',
+                        'execution-while-not-rendered': 'true',
+                        'web-share': 'true'
+                      } as any}>
+                    </iframe>
+                  </div>
+                )}
 
-            {/* Charmander 3D Model */}
-            <div className={`sketchfab-embed-wrapper ${selectedPokemonData?.id === 4 ? 'active' : 'hidden'}`}>
-              <iframe 
-                title="Charmander" 
-                frameBorder="0" 
-                allowFullScreen 
-                allow="autoplay; fullscreen; xr-spatial-tracking" 
-                src="https://sketchfab.com/models/48b8d7c40bff4e36aa39938675b701c3/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
-                {...{
-                  'mozallowfullscreen': 'true',
-                  'webkitallowfullscreen': 'true',
-                  'xr-spatial-tracking': 'true',
-                  'execution-while-out-of-viewport': 'true',
-                  'execution-while-not-rendered': 'true',
-                  'web-share': 'true'
-                } as any}>
-              </iframe>
-            </div>
+                {selectedPokemonData?.id === 4 && (
+                  <div className="sketchfab-embed-wrapper">
+                    <iframe 
+                      title="Charmander" 
+                      frameBorder="0" 
+                      allowFullScreen 
+                      allow="autoplay; fullscreen; xr-spatial-tracking" 
+                      src="https://sketchfab.com/models/48b8d7c40bff4e36aa39938675b701c3/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                      onLoad={() => console.log('Model 4 loaded')}
+                      {...{
+                        'mozallowfullscreen': 'true',
+                        'webkitallowfullscreen': 'true',
+                        'xr-spatial-tracking': 'true',
+                        'execution-while-out-of-viewport': 'true',
+                        'execution-while-not-rendered': 'true',
+                        'web-share': 'true'
+                      } as any}>
+                    </iframe>
+                  </div>
+                )}
 
-            {/* Charmeleon 3D Model */}
-            <div className={`sketchfab-embed-wrapper ${selectedPokemonData?.id === 5 ? 'active' : 'hidden'}`}>
-              <iframe 
-                title="Charmeleon" 
-                frameBorder="0" 
-                allowFullScreen 
-                allow="autoplay; fullscreen; xr-spatial-tracking" 
-                src="https://sketchfab.com/models/f4d5719b2cb34c44ae7db4069cfb30ba/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
-                {...{
-                  'mozallowfullscreen': 'true',
-                  'webkitallowfullscreen': 'true',
-                  'xr-spatial-tracking': 'true',
-                  'execution-while-out-of-viewport': 'true',
-                  'execution-while-not-rendered': 'true',
-                  'web-share': 'true'
-                } as any}>
-              </iframe>
-            </div>
+                {selectedPokemonData?.id === 5 && (
+                  <div className="sketchfab-embed-wrapper">
+                    <iframe 
+                      title="Charmeleon" 
+                      frameBorder="0" 
+                      allowFullScreen 
+                      allow="autoplay; fullscreen; xr-spatial-tracking" 
+                      src="https://sketchfab.com/models/80fe151ad45d46bd80c4b9d2779c48a9/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                      onLoad={() => console.log('Model 5 loaded')}
+                      {...{
+                        'mozallowfullscreen': 'true',
+                        'webkitallowfullscreen': 'true',
+                        'xr-spatial-tracking': 'true',
+                        'execution-while-out-of-viewport': 'true',
+                        'execution-while-not-rendered': 'true',
+                        'web-share': 'true'
+                      } as any}>
+                    </iframe>
+                  </div>
+                )}
 
-            {/* Wartortle 3D Model */}
-            <div className={`sketchfab-embed-wrapper ${selectedPokemonData?.id === 8 ? 'active' : 'hidden'}`}>
-              <iframe 
-                title="Wartortle" 
-                frameBorder="0" 
-                allowFullScreen 
-                allow="autoplay; fullscreen; xr-spatial-tracking" 
-                src="https://sketchfab.com/models/f64ed3dc727a4c848e2e11a71d93a269/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
-                {...{
-                  'mozallowfullscreen': 'true',
-                  'webkitallowfullscreen': 'true',
-                  'xr-spatial-tracking': 'true',
-                  'execution-while-out-of-viewport': 'true',
-                  'execution-while-not-rendered': 'true',
-                  'web-share': 'true'
-                } as any}>
-              </iframe>
-            </div>
+                {selectedPokemonData?.id === 7 && (
+                  <div className="sketchfab-embed-wrapper">
+                    <iframe 
+                      title="007 Squirtle" 
+                      frameBorder="0" 
+                      allowFullScreen 
+                      allow="autoplay; fullscreen; xr-spatial-tracking" 
+                      src="https://sketchfab.com/models/102ca3237aac44a6b5b15d6e3fbdc1df/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                      onLoad={() => console.log('Model 7 loaded')}
+                      {...{
+                        'mozallowfullscreen': 'true',
+                        'webkitallowfullscreen': 'true',
+                        'xr-spatial-tracking': 'true',
+                        'execution-while-out-of-viewport': 'true',
+                        'execution-while-not-rendered': 'true',
+                        'web-share': 'true'
+                      } as any}>
+                    </iframe>
+                  </div>
+                )}
 
-            {/* Squirtle 3D Model */}
-            <div className={`sketchfab-embed-wrapper ${selectedPokemonData?.id === 7 ? 'active' : 'hidden'}`}>
-              <iframe 
-                title="007 Squirtle" 
-                frameBorder="0" 
-                allowFullScreen 
-                allow="autoplay; fullscreen; xr-spatial-tracking" 
-                src="https://sketchfab.com/models/102ca3237aac44a6b5b15d6e3fbdc1df/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
-                {...{
-                  'mozallowfullscreen': 'true',
-                  'webkitallowfullscreen': 'true',
-                  'xr-spatial-tracking': 'true',
-                  'execution-while-out-of-viewport': 'true',
-                  'execution-while-not-rendered': 'true',
-                  'web-share': 'true'
-                } as any}>
-              </iframe>
-            </div>
+                {selectedPokemonData?.id === 8 && (
+                  <div className="sketchfab-embed-wrapper">
+                    <iframe 
+                      title="Wartortle" 
+                      frameBorder="0" 
+                      allowFullScreen 
+                      allow="autoplay; fullscreen; xr-spatial-tracking" 
+                      src="https://sketchfab.com/models/f64ed3dc727a4c848e2e11a71d93a269/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                      onLoad={() => console.log('Model 8 loaded')}
+                      {...{
+                        'mozallowfullscreen': 'true',
+                        'webkitallowfullscreen': 'true',
+                        'xr-spatial-tracking': 'true',
+                        'execution-while-out-of-viewport': 'true',
+                        'execution-while-not-rendered': 'true',
+                        'web-share': 'true'
+                      } as any}>
+                    </iframe>
+                  </div>
+                )}
 
-            {/* Blastoise 3D Model */}
-            <div className={`sketchfab-embed-wrapper ${selectedPokemonData?.id === 9 ? 'active' : 'hidden'}`}>
-              <iframe 
-                title="Blastoise" 
-                frameBorder="0" 
-                allowFullScreen 
-                allow="autoplay; fullscreen; xr-spatial-tracking" 
-                src="https://sketchfab.com/models/417667e24bf14139b4de351c9b79b789/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
-                {...{
-                  'mozallowfullscreen': 'true',
-                  'webkitallowfullscreen': 'true',
-                  'xr-spatial-tracking': 'true',
-                  'execution-while-out-of-viewport': 'true',
-                  'execution-while-not-rendered': 'true',
-                  'web-share': 'true'
-                } as any}>
-              </iframe>
-            </div>
+                {selectedPokemonData?.id === 9 && (
+                  <div className="sketchfab-embed-wrapper">
+                    <iframe 
+                      title="Blastoise" 
+                      frameBorder="0" 
+                      allowFullScreen 
+                      allow="autoplay; fullscreen; xr-spatial-tracking" 
+                      src="https://sketchfab.com/models/417667e24bf14139b4de351c9b79b789/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                      onLoad={() => console.log('Model 9 loaded')}
+                      {...{
+                        'mozallowfullscreen': 'true',
+                        'webkitallowfullscreen': 'true',
+                        'xr-spatial-tracking': 'true',
+                        'execution-while-out-of-viewport': 'true',
+                        'execution-while-not-rendered': 'true',
+                        'web-share': 'true'
+                      } as any}>
+                    </iframe>
+                  </div>
+                )}
 
-            {/* Placeholder Image for Other Pokemon */}
-            <div className={`pokemon-image-container ${!selectedPokemonData || ![1, 2, 4, 5, 7, 8, 9].includes(selectedPokemonData.id) ? 'active' : 'hidden'}`}>
-              <img
-                src={process.env.PUBLIC_URL + '/empty.png'}
-                alt="Pokemon"
-                className="pokemon-image"
-                onLoad={() => console.log('Image loaded successfully')}
-                onError={(e) => console.error('Image failed to load:', e)}
-              />
-            </div>
+                {/* Placeholder Image for Other Pokemon */}
+                {(!selectedPokemonData || ![1, 2, 4, 5, 7, 8, 9].includes(selectedPokemonData.id)) && (
+                  <div className="pokemon-image-container">
+                    <img
+                      src={process.env.PUBLIC_URL + '/empty.png'}
+                      alt="Pokemon"
+                      className="pokemon-image"
+                      onLoad={() => console.log('Image loaded successfully')}
+                      onError={(e) => console.error('Image failed to load:', e)}
+                    />
+                  </div>
+                )}
+              </>
+            )}
           </div>
           <div className="pokemon-stats">
             <div className="stats-content">
@@ -251,7 +293,7 @@ const Pokedex: React.FC = () => {
                 name={pokemon.name}
                 status={pokemon.status}
                 isSelected={pokemon.id === selectedPokemon}
-                onClick={() => setSelectedPokemon(pokemon.id)}
+                onClick={() => handlePokemonSelect(pokemon.id)}
               />
             ))}
           </div>
