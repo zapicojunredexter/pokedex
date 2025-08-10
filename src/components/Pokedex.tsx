@@ -119,7 +119,9 @@ const Pokedex: React.FC = () => {
         {/* Left Panel - Pokemon Display */}
         <div className="pokedex-left-panel">
           <div className="pokemon-name-display">
-            {selectedPokemonData?.name || 'Unknown'}
+            <div className="name-content">
+              {selectedPokemonData?.name || 'Unknown'}
+            </div>
           </div>
           
           <div className="pokemon-viewer">
@@ -131,8 +133,10 @@ const Pokedex: React.FC = () => {
           </div>
           
           <div className="pokemon-stats">
-            <div>Seen: {seenCount}</div>
-            <div>Owned: {ownedCount}</div>
+            <div className="stats-content">
+              <div>Seen: {seenCount}</div>
+              <div>Owned: {ownedCount}</div>
+            </div>
           </div>
         </div>
         
