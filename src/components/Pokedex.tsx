@@ -163,6 +163,24 @@ const Pokedex: React.FC = () => {
                   } as any}>
                 </iframe>
               </div>
+            ) : selectedPokemonData?.id === 8 ? (
+              <div className="sketchfab-embed-wrapper">
+                <iframe 
+                  title="Wartortle" 
+                  frameBorder="0" 
+                  allowFullScreen 
+                  allow="autoplay; fullscreen; xr-spatial-tracking" 
+                  src="https://sketchfab.com/models/f64ed3dc727a4c848e2e11a71d93a269/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                  {...{
+                    'mozallowfullscreen': 'true',
+                    'webkitallowfullscreen': 'true',
+                    'xr-spatial-tracking': 'true',
+                    'execution-while-out-of-viewport': 'true',
+                    'execution-while-not-rendered': 'true',
+                    'web-share': 'true'
+                  } as any}>
+                </iframe>
+              </div>
             ) : (
               <div className="pokemon-image-container">
                 <img
