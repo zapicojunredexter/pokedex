@@ -114,6 +114,7 @@
   z-index: 1;
   margin: 0 15px;
   width: 100%;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
 }
 
 /* Pokemon Viewer (Image Display) */
@@ -233,6 +234,7 @@
   z-index: 1;
   margin: 0 15px;
   width: 100%;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
 }
 
 .pokemon-stats div {
@@ -340,10 +342,11 @@
   font-weight: bold;
   min-width: 40px;
   color: white;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
 }
 
 .pokemon-name {
-  flex: 1;
+  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
 }
 
 /* Status Icons */
