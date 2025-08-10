@@ -13,9 +13,9 @@ interface PokemonItemProps {
 const PokemonItem: React.FC<PokemonItemProps> = ({ id, name, status, isSelected, onClick }) => {
   const getPokeballIcon = () => {
     if (status === 'owned') {
-      return process.env.PUBLIC_URL + '/pokeball.png';
+      return `${process.env.PUBLIC_URL || ''}/pokeball.png`;
     } else {
-      return process.env.PUBLIC_URL + '/pokeball_white.png';
+      return `${process.env.PUBLIC_URL || ''}/pokeball_white.png`;
     }
   };
 
@@ -266,7 +266,7 @@ const Pokedex: React.FC = () => {
                 {(!selectedPokemonData || ![1, 2, 4, 5, 7, 8, 9].includes(selectedPokemonData.id)) && (
                   <div className="pokemon-image-container">
                     <img
-                      src={process.env.PUBLIC_URL + '/empty.png'}
+                      src={`${process.env.PUBLIC_URL || ''}/empty.png`}
                       alt="Pokemon"
                       className="pokemon-image"
                       onLoad={() => console.log('Image loaded successfully')}
