@@ -1,21 +1,6 @@
 import React, { useState } from 'react';
 import './Pokedex.css';
 
-// Pokemon Image Component - Using @empty.png with borders
-const PokemonImage: React.FC<{ pokemonId: number }> = ({ pokemonId }) => {
-  return (
-    <div className="pokemon-image-container">
-      <img 
-        src={process.env.PUBLIC_URL + '/empty.png'} 
-        alt="Pokemon placeholder" 
-        className="pokemon-image"
-        onLoad={() => console.log('Image loaded successfully')}
-        onError={(e) => console.error('Image failed to load:', e)}
-      />
-    </div>
-  );
-};
-
 // Pokemon List Item Component
 interface PokemonItemProps {
   id: number;
@@ -88,7 +73,6 @@ const Pokedex: React.FC = () => {
     { id: 8, name: 'Wartortle', status: 'seen', isCaught: false, isEncountered: true },
     { id: 9, name: 'Blastoise', status: 'unknown', isCaught: false, isEncountered: false },
     { id: 10, name: 'Caterpie', status: 'unknown', isCaught: false, isEncountered: false },
-    { id: 151, name: 'Mew', status: 'owned', isCaught: true, isEncountered: true },
   ];
 
   const selectedPokemonData = pokemonList.find(p => p.id === selectedPokemon);
@@ -105,8 +89,91 @@ const Pokedex: React.FC = () => {
               {selectedPokemonData?.name || 'Unknown'}
             </div>
           </div>
+          {/* Pokemon Viewer */}
           <div className="pokemon-viewer">
-            <PokemonImage pokemonId={selectedPokemon} />
+            {selectedPokemonData?.id === 1 ? (
+              <div className="sketchfab-embed-wrapper">
+                <iframe 
+                  title="Bulbasaur - Pokemon" 
+                  frameBorder="0" 
+                  allowFullScreen 
+                  allow="autoplay; fullscreen; xr-spatial-tracking" 
+                  src="https://sketchfab.com/models/853e861e891047c0883860db627adb35/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                  {...{
+                    'mozallowfullscreen': 'true',
+                    'webkitallowfullscreen': 'true',
+                    'xr-spatial-tracking': 'true',
+                    'execution-while-out-of-viewport': 'true',
+                    'execution-while-not-rendered': 'true',
+                    'web-share': 'true'
+                  } as any}>
+                </iframe>
+              </div>
+            ) : selectedPokemonData?.id === 2 ? (
+              <div className="sketchfab-embed-wrapper">
+                <iframe 
+                  title="Ivysaur" 
+                  frameBorder="0" 
+                  allowFullScreen 
+                  allow="autoplay; fullscreen; xr-spatial-tracking" 
+                  src="https://sketchfab.com/models/16174087ee1b44bbabf5858aee8592aa/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                  {...{
+                    'mozallowfullscreen': 'true',
+                    'webkitallowfullscreen': 'true',
+                    'xr-spatial-tracking': 'true',
+                    'execution-while-out-of-viewport': 'true',
+                    'execution-while-not-rendered': 'true',
+                    'web-share': 'true'
+                  } as any}>
+                </iframe>
+              </div>
+            ) : selectedPokemonData?.id === 4 ? (
+              <div className="sketchfab-embed-wrapper">
+                <iframe 
+                  title="Charmander" 
+                  frameBorder="0" 
+                  allowFullScreen 
+                  allow="autoplay; fullscreen; xr-spatial-tracking" 
+                  src="https://sketchfab.com/models/48b8d7c40bff4e36aa39938675b701c3/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                  {...{
+                    'mozallowfullscreen': 'true',
+                    'webkitallowfullscreen': 'true',
+                    'xr-spatial-tracking': 'true',
+                    'execution-while-out-of-viewport': 'true',
+                    'execution-while-not-rendered': 'true',
+                    'web-share': 'true'
+                  } as any}>
+                </iframe>
+              </div>
+            ) : selectedPokemonData?.id === 5 ? (
+              <div className="sketchfab-embed-wrapper">
+                <iframe 
+                  title="Charmeleon" 
+                  frameBorder="0" 
+                  allowFullScreen 
+                  allow="autoplay; fullscreen; xr-spatial-tracking" 
+                  src="https://sketchfab.com/models/f4d5719b2cb34c44ae7db4069cfb30ba/embed?autospin=1&autostart=1&camera=0&preload=1&transparent=1"
+                  {...{
+                    'mozallowfullscreen': 'true',
+                    'webkitallowfullscreen': 'true',
+                    'xr-spatial-tracking': 'true',
+                    'execution-while-out-of-viewport': 'true',
+                    'execution-while-not-rendered': 'true',
+                    'web-share': 'true'
+                  } as any}>
+                </iframe>
+              </div>
+            ) : (
+              <div className="pokemon-image-container">
+                <img
+                  src={process.env.PUBLIC_URL + '/empty.png'}
+                  alt="Pokemon"
+                  className="pokemon-image"
+                  onLoad={() => console.log('Image loaded successfully')}
+                  onError={(e) => console.error('Image failed to load:', e)}
+                />
+              </div>
+            )}
           </div>
           <div className="pokemon-stats">
             <div className="stats-content">
