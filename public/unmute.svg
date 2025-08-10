@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <title>Unmute Icon</title>
+  <g fill="none" stroke="white" stroke-width="48" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Speaker body -->
+    <path d="M256 112 L192 160 H112 a32 32 0 0 0 -32 32 v128 a32 32 0 0 0 32 32 h80 l64 48 z"/>
+    <!-- Sound waves -->
+    <path d="M352 176 q 64 80 0 160" />
+    <path d="M400 144 q 96 112 0 224" />
+  </g>
+</svg>

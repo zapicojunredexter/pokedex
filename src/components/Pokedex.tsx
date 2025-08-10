@@ -65,11 +65,17 @@ interface PokemonData {
 // Main Pokédex Component
 const Pokedex: React.FC = () => {
   const [selectedPokemon, setSelectedPokemon] = useState<number | null>(7); // Set Squirtle as default
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
   const [showDetailsOverlay, setShowDetailsOverlay] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isAudioEnabled, setIsAudioEnabled] = useState(true);
+  const [isAudioLoading, setIsAudioLoading] = useState(true);
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+  const [showLoadingModal, setShowLoadingModal] = useState(true);
+  const [loadingProgress, setLoadingProgress] = useState(0);
   const pokemonListRef = useRef<HTMLDivElement>(null);
+  const audioRef = useRef<HTMLAudioElement>(null);
 
   const [pokemonList, setPokemonList] = useState<PokemonData[]>([
     { 
@@ -614,6 +620,104 @@ const Pokedex: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [selectedPokemon, showDetailsOverlay, pokemonList]);
 
+  // Handle audio playback
+  useEffect(() => {
+    console.log('Audio effect triggered, isAudioEnabled:', isAudioEnabled);
+    if (audioRef.current) {
+      console.log('Audio ref is available');
+      // Set audio properties for better compatibility
+      audioRef.current.volume = 0.5;
+      audioRef.current.preload = 'auto';
+      
+      if (isAudioEnabled) {
+        // Don't try to autoplay - wait for user interaction
+        console.log('Audio enabled, waiting for user interaction');
+      } else {
+        audioRef.current.pause();
+        console.log('Audio paused');
+      }
+    } else {
+      console.log('Audio ref not available yet');
+    }
+  }, [isAudioEnabled]);
+
+  // Log when audio ref becomes available
+  useEffect(() => {
+    if (audioRef.current) {
+      console.log('Audio ref mounted');
+      console.log('Audio element:', audioRef.current);
+      console.log('Audio src:', audioRef.current.src);
+    }
+  }, []);
+
+  // Additional effect to handle audio loading and initial play
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (audio && isAudioEnabled) {
+      console.log('Setting up audio event listeners');
+      
+      // Handle audio loading
+      const handleCanPlay = () => {
+        console.log('Audio can play');
+        setIsAudioLoading(false);
+        // Don't autoplay - wait for user interaction
+      };
+
+      const handleError = (error: Event) => {
+        console.error('Audio error:', error);
+        setIsAudioLoading(false);
+      };
+
+      const handleLoadStart = () => {
+        console.log('Audio load started');
+        setIsAudioLoading(true);
+      };
+
+      const handlePlay = () => {
+        console.log('Audio started playing');
+        setIsAudioPlaying(true);
+      };
+
+      const handlePause = () => {
+        console.log('Audio paused');
+        setIsAudioPlaying(false);
+      };
+
+      const handleEnded = () => {
+        console.log('Audio ended');
+        setIsAudioPlaying(false);
+      };
+
+      const handleLoadedData = () => {
+        console.log('Audio loaded data');
+      };
+
+      const handleLoadedMetadata = () => {
+        console.log('Audio loaded metadata');
+      };
+
+      audio.addEventListener('canplay', handleCanPlay);
+      audio.addEventListener('error', handleError);
+      audio.addEventListener('loadstart', handleLoadStart);
+      audio.addEventListener('play', handlePlay);
+      audio.addEventListener('pause', handlePause);
+      audio.addEventListener('ended', handleEnded);
+      audio.addEventListener('loadeddata', handleLoadedData);
+      audio.addEventListener('loadedmetadata', handleLoadedMetadata);
+
+      return () => {
+        audio.removeEventListener('canplay', handleCanPlay);
+        audio.removeEventListener('error', handleError);
+        audio.removeEventListener('loadstart', handleLoadStart);
+        audio.removeEventListener('play', handlePlay);
+        audio.removeEventListener('pause', handlePause);
+        audio.removeEventListener('ended', handleEnded);
+        audio.removeEventListener('loadeddata', handleLoadedData);
+        audio.removeEventListener('loadedmetadata', handleLoadedMetadata);
+      };
+    }
+  }, [isAudioEnabled]);
+
   const handlePokemonSelect = (id: number) => {
     // Save current scroll position before opening overlay
     if (pokemonListRef.current) {
@@ -647,10 +751,169 @@ const Pokedex: React.FC = () => {
     }));
   };
 
+  const toggleAudio = () => {
+    if (isAudioEnabled) {
+      // Disabling audio
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+      setIsAudioPlaying(false);
+      setIsAudioEnabled(false);
+    } else {
+      // Enabling audio
+      setIsAudioEnabled(true);
+      // Automatically resume audio if it was playing before
+      if (audioRef.current) {
+        audioRef.current.play().then(() => {
+          console.log('Audio resumed after unmuting');
+          setIsAudioPlaying(true);
+        }).catch(error => {
+          console.log('Audio resume failed after unmuting:', error);
+        });
+      }
+    }
+  };
+
+  // Handle starting the app and enabling audio
+  const handleStartApp = () => {
+    console.log('Starting Pokedex app...');
+    
+    // Simulate loading progress
+    let progress = 0;
+    const progressInterval = setInterval(() => {
+      progress += Math.random() * 15;
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(progressInterval);
+        
+        // Hide loading modal and start audio
+        setTimeout(() => {
+          setShowLoadingModal(false);
+          setIsLoading(false);
+          
+          // Start audio after user interaction
+          if (audioRef.current && isAudioEnabled) {
+            audioRef.current.play().then(() => {
+              console.log('Audio started playing after app start');
+              setIsAudioPlaying(true);
+            }).catch(error => {
+              console.log('Audio play failed after app start:', error);
+            });
+          }
+        }, 500);
+      }
+      setLoadingProgress(progress);
+    }, 100);
+  };
+
+  // Handle user interaction to enable audio
+  const handleUserInteraction = () => {
+    console.log('User interaction detected');
+    console.log('Audio ref exists:', !!audioRef.current);
+    console.log('Audio enabled:', isAudioEnabled);
+    console.log('Audio playing:', isAudioPlaying);
+    
+    if (audioRef.current && isAudioEnabled && !isAudioPlaying) {
+      console.log('Attempting to play audio...');
+      audioRef.current.play().then(() => {
+        console.log('Audio started playing on user interaction');
+        setIsAudioPlaying(true);
+      }).catch(error => {
+        console.log('Audio play failed on user interaction:', error);
+        console.error('Error details:', error);
+      });
+    } else {
+      console.log('Audio play conditions not met');
+    }
+  };
+
+  // Add click event listener to the entire pokedex container to enable audio on user interaction
+  useEffect(() => {
+    const container = document.querySelector('.pokedex-container');
+    if (container) {
+      container.addEventListener('click', handleUserInteraction);
+      return () => container.removeEventListener('click', handleUserInteraction);
+    }
+  }, [isAudioEnabled]);
+
   return (
-    <div className="pokedex-container">
+    <>
+      {/* Loading Modal */}
+      {showLoadingModal && (
+        <div className="loading-modal-overlay">
+          <div className="loading-modal">
+            <div className="loading-modal-header">
+              <div className="pokedex-logo">
+                <div className="pokedex-logo-circle">
+                  <div className="pokedex-logo-inner">
+                    <span className="pokedex-logo-text">P</span>
+                  </div>
+                </div>
+              </div>
+              <h1 className="loading-title">KANTO POKÉDEX</h1>
+              <p className="loading-subtitle">Loading Pokemon Database...</p>
+            </div>
+            
+            <div className="loading-progress-container">
+              <div className="loading-progress-bar">
+                <div 
+                  className="loading-progress-fill" 
+                  style={{ width: `${loadingProgress}%` }}
+                ></div>
+              </div>
+              <span className="loading-progress-text">{Math.round(loadingProgress)}%</span>
+            </div>
+            
+            <div className="loading-pokemon">
+              <div className="loading-pokemon-sprite"><img src={`${process.env.PUBLIC_URL || ''}/pokeball.png`} alt="Pokemon" /></div>
+              <div className="loading-pokemon-trail">
+                <span>•</span>
+                <span>•</span>
+                <span>•</span>
+              </div>
+            </div>
+            
+            <button 
+              className="start-app-button"
+              onClick={handleStartApp}
+              disabled={loadingProgress > 0}
+            >
+              {loadingProgress === 0 ? 'START POKÉDEX' : 'LOADING...'}
+            </button>
+            
+            <div className="loading-tips">
+              <p>💡 Tip: Click the START button to begin your Pokemon journey!</p>
+              <p>🎵 Background music will play once you start exploring</p>
+            </div>
+          </div>
+        </div>
+      )}
+      
+      <div className="pokedex-container">
       <div className="pokedex-header">
         <h1>KANTO POKÉDEX</h1>
+        <button 
+          className={`audio-toggle ${isAudioEnabled ? 'enabled' : 'disabled'} ${isAudioLoading ? 'loading' : ''} ${isAudioPlaying ? 'playing' : ''}`}
+          onClick={toggleAudio}
+          title={isAudioEnabled ? 'Disable Audio' : 'Enable Audio'}
+          disabled={isAudioLoading}
+        >
+          {isAudioLoading ? (
+            '⏳'
+          ) : isAudioEnabled ? (
+            <img 
+              src={`${process.env.PUBLIC_URL || ''}/unmute.svg`} 
+              alt="Audio Enabled" 
+              className="audio-icon"
+            />
+          ) : (
+            <img 
+              src={`${process.env.PUBLIC_URL || ''}/mute.svg`} 
+              alt="Audio Disabled" 
+              className="audio-icon"
+            />
+          )}
+        </button>
       </div>
       <div className="pokedex-body">
         <div className="pokedex-left-panel">
@@ -1513,7 +1776,23 @@ const Pokedex: React.FC = () => {
           )}
         </div>
       </div>
+      
+      {/* Audio Element */}
+      <audio 
+        ref={audioRef}
+        preload="auto"
+        loop
+        muted={!isAudioEnabled}
+        onLoadStart={() => console.log('Audio loading started')}
+        onCanPlay={() => console.log('Audio can play')}
+        onError={(e) => console.error('Audio error:', e)}
+      >
+        <source src={`${process.env.PUBLIC_URL || ''}/pokemon_audio.mp3`} type="audio/mpeg" />
+        <source src={`${process.env.PUBLIC_URL || ''}/pokemon_audio.mp3`} type="audio/mp3" />
+        Your browser does not support the audio element.
+      </audio>
     </div>
+    </>
   );
 };
 
