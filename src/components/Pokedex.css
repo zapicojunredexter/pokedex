@@ -137,6 +137,7 @@
   display: block;
   min-width: 200px;
   min-height: 200px;
+  opacity: 0.3;
 }
 
 /* Sketchfab Embed Wrapper */
