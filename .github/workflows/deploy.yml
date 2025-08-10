@@ -31,7 +31,12 @@ jobs:
         run: npm ci
       
       - name: Build
-        run: npm run build:gh-pages
+        env:
+          PUBLIC_URL: /pokedex
+          CI: false
+        run: |
+          echo "Building with PUBLIC_URL=$PUBLIC_URL"
+          npm run build
       
       - name: Setup Pages
         uses: actions/configure-pages@v4
