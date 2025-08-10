@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls } from '@react-three/drei';
 import './Pokedex.css';
 
-// 3D Black Box Component
-const BlackBox: React.FC = () => {
+// Pokemon Image Component - Using @empty.png with borders
+const PokemonImage: React.FC<{ pokemonId: number }> = ({ pokemonId }) => {
   return (
-    <mesh>
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color="black" />
-    </mesh>
+    <div className="pokemon-image-container">
+      <img 
+        src={process.env.PUBLIC_URL + '/empty.png'} 
+        alt="Pokemon placeholder" 
+        className="pokemon-image"
+        onLoad={() => console.log('Image loaded successfully')}
+        onError={(e) => console.error('Image failed to load:', e)}
+      />
+    </div>
   );
 };
 
@@ -22,33 +25,9 @@ const SketchfabViewer: React.FC = () => {
         frameBorder="0" 
         allowFullScreen 
         allow="autoplay; fullscreen; xr-spatial-tracking" 
-        src="https://sketchfab.com/models/4c9dfbb590744368a05f1bed1fbf8d3e/embed?autostart=1&preload=1&ui_controls=1&ui_infos=0&ui_inspector=0&ui_stop=0&ui_watermark=0&ui_watermark_link=0&ui_ar=0&ui_help=0&ui_settings=0&ui_vr=0&ui_fullscreen=0&ui_animations=0"
+        src="https://sketchfab.com/models/4c9dfbb590744368a05f1bed1fbf8d3e/embed?autostart=1&preload=1&ui_controls=1&ui_infos=0&ui_inspector=0&ui_stop=0&ui_watermark=0&ui_watermark_link=0&ui_ar=0&ui_help=0&ui_settings=0&ui_vr=0&ui_fullscreen=0&ui_animations=0&transparent=1"
         style={{width: '100%', height: '100%', border: 'none'}}
       />
-      <p style={{fontSize: '13px', fontWeight: 'normal', margin: '5px', color: '#4A4A4A'}}>
-        <a 
-          href="https://sketchfab.com/3d-models/mew-pokemon-4c9dfbb590744368a05f1bed1fbf8d3e?utm_medium=embed&utm_campaign=share-popup&utm_content=4c9dfbb590744368a05f1bed1fbf8d3e" 
-          target="_blank" 
-          rel="noreferrer" 
-          style={{fontWeight: 'bold', color: '#1CAAD9'}}
-        >
-          Mew Pokémon
-        </a> by <a 
-          href="https://sketchfab.com/germydan?utm_medium=embed&utm_campaign=share-popup&utm_content=4c9dfbb590744368a05f1bed1fbf8d3e" 
-          target="_blank" 
-          rel="noreferrer" 
-          style={{fontWeight: 'bold', color: '#1CAAD9'}}
-        >
-          germydan
-        </a> on <a 
-          href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=4c9dfbb590744368a05f1bed1fbf8d3e" 
-          target="_blank" 
-          rel="noreferrer" 
-          style={{fontWeight: 'bold', color: '#1CAAD9'}}
-        >
-          Sketchfab
-        </a>
-      </p>
     </div>
   );
 };
@@ -63,17 +42,19 @@ interface PokemonItemProps {
 }
 
 const PokemonItem: React.FC<PokemonItemProps> = ({ id, name, status, isSelected, onClick }) => {
-  const getStatusIcon = () => {
-    switch (status) {
-      case 'owned':
-        return <div className="pokeball-icon">⚪</div>;
-      case 'seen':
-        return <div className="seen-icon">○</div>;
-      case 'unknown':
-        return <div className="unknown-icon"></div>;
-      default:
-        return null;
+  const getPokeballIcon = () => {
+    if (status === 'owned') {
+      return process.env.PUBLIC_URL + '/pokeball.png';
+    } else {
+      return process.env.PUBLIC_URL + '/pokeball_white.png';
     }
+  };
+
+  const getDisplayName = () => {
+    if (status === 'unknown') {
+      return '----------';
+    }
+    return name;
   };
 
   return (
@@ -81,16 +62,29 @@ const PokemonItem: React.FC<PokemonItemProps> = ({ id, name, status, isSelected,
       className={`pokemon-item ${isSelected ? 'selected' : ''}`}
       onClick={onClick}
     >
-      <div className="pokemon-status">
-        {getStatusIcon()}
-      </div>
       <div className="pokemon-info">
-        <span className="pokemon-number">{String(id).padStart(3, '0')}</span>
-        <span className="pokemon-name">{name}</span>
+        <div className="pokemon-number-container">
+          <img 
+            src={getPokeballIcon()} 
+            alt="Pokeball" 
+            className="pokeball-icon-small"
+          />
+          <span className="pokemon-number">{String(id).padStart(3, '0')}</span>
+        </div>
+        <span className="pokemon-name">{getDisplayName()}</span>
       </div>
     </div>
   );
 };
+
+// Pokemon data interface
+interface PokemonData {
+  id: number;
+  name: string;
+  status: 'owned' | 'seen' | 'unknown';
+  isCaught: boolean;
+  isEncountered: boolean;
+}
 
 // Main Pokédex Component
 const Pokedex: React.FC = () => {
@@ -98,18 +92,19 @@ const Pokedex: React.FC = () => {
   const [seenCount] = useState(12);
   const [ownedCount] = useState(9);
 
-  const pokemonList = [
-    { id: 1, name: 'Bulbasaur', status: 'owned' as const },
-    { id: 2, name: 'Ivysaur', status: 'owned' as const },
-    { id: 3, name: 'Venusaur', status: 'unknown' as const },
-    { id: 4, name: 'Charmander', status: 'owned' as const },
-    { id: 5, name: 'Charmeleon', status: 'owned' as const },
-    { id: 6, name: 'Charizard', status: 'unknown' as const },
-    { id: 7, name: 'Squirtle', status: 'owned' as const },
-    { id: 8, name: 'Wartortle', status: 'seen' as const },
-    { id: 9, name: 'Blastoise', status: 'unknown' as const },
-    { id: 10, name: 'Caterpie', status: 'unknown' as const },
-    { id: 151, name: 'Mew', status: 'owned' as const },
+  // Pokemon data array for easy updates
+  const pokemonList: PokemonData[] = [
+    { id: 1, name: 'Bulbasaur', status: 'owned', isCaught: true, isEncountered: true },
+    { id: 2, name: 'Ivysaur', status: 'owned', isCaught: true, isEncountered: true },
+    { id: 3, name: 'Venusaur', status: 'unknown', isCaught: false, isEncountered: false },
+    { id: 4, name: 'Charmander', status: 'owned', isCaught: true, isEncountered: true },
+    { id: 5, name: 'Charmeleon', status: 'owned', isCaught: true, isEncountered: true },
+    { id: 6, name: 'Charizard', status: 'unknown', isCaught: false, isEncountered: false },
+    { id: 7, name: 'Squirtle', status: 'owned', isCaught: true, isEncountered: true },
+    { id: 8, name: 'Wartortle', status: 'seen', isCaught: false, isEncountered: true },
+    { id: 9, name: 'Blastoise', status: 'unknown', isCaught: false, isEncountered: false },
+    { id: 10, name: 'Caterpie', status: 'unknown', isCaught: false, isEncountered: false },
+    { id: 151, name: 'Mew', status: 'owned', isCaught: true, isEncountered: true },
   ];
 
   const selectedPokemonData = pokemonList.find(p => p.id === selectedPokemon);
@@ -121,7 +116,7 @@ const Pokedex: React.FC = () => {
       </div>
       
       <div className="pokedex-body">
-        {/* Left Panel - 3D Viewer */}
+        {/* Left Panel - Pokemon Display */}
         <div className="pokedex-left-panel">
           <div className="pokemon-name-display">
             {selectedPokemonData?.name || 'Unknown'}
@@ -131,12 +126,7 @@ const Pokedex: React.FC = () => {
             {selectedPokemon === 151 ? (
               <SketchfabViewer />
             ) : (
-              <Canvas camera={{ position: [0, 0, 3] }}>
-                <ambientLight intensity={0.5} />
-                <pointLight position={[10, 10, 10]} />
-                <BlackBox />
-                <OrbitControls enableZoom={true} enablePan={true} enableRotate={true} />
-              </Canvas>
+              <PokemonImage pokemonId={selectedPokemon} />
             )}
           </div>
           
