@@ -123,7 +123,7 @@
 
 .loading-progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #e74c3c, #f39c12, #f1c40f, #27ae60);
+  background: linear-gradient(90deg, #c0392b, #e74c3c, #c0392b);
   transition: width 0.3s ease;
   border-radius: 8px;
 }
