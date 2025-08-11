@@ -892,11 +892,10 @@ const Pokedex: React.FC = () => {
       <div className="pokedex-container">
       <div className="pokedex-header">
         <h1>KANTO POKÉDEX</h1>
-        <button 
+        <div 
           className={`audio-toggle ${isAudioEnabled ? 'enabled' : 'disabled'} ${isAudioLoading ? 'loading' : ''} ${isAudioPlaying ? 'playing' : ''}`}
           onClick={toggleAudio}
           title={isAudioEnabled ? 'Disable Audio' : 'Enable Audio'}
-          disabled={isAudioLoading}
         >
           {isAudioLoading ? (
             '⏳'
@@ -913,7 +912,7 @@ const Pokedex: React.FC = () => {
               className="audio-icon"
             />
           )}
-        </button>
+        </div>
       </div>
       <div className="pokedex-body">
         <div className="pokedex-left-panel">

@@ -258,8 +258,6 @@
   right: 15px;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.3);
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -273,23 +271,17 @@
 }
 
 .audio-toggle:hover {
-  background: rgba(255, 255, 255, 0.3);
-  border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-50%) scale(1.1);
 }
 
 .audio-toggle.enabled {
-  background: rgba(46, 204, 113, 0.3);
-  border-color: rgba(46, 204, 113, 0.6);
 }
 
 .audio-toggle.disabled {
-  background: rgba(231, 76, 60, 0.3);
-  border-color: rgba(231, 76, 60, 0.6);
 }
 
 .audio-toggle.playing {
-  animation: audio-pulse 2s ease-in-out infinite;
+  /* No special styling for playing state */
 }
 
 .audio-icon {
@@ -303,15 +295,9 @@
   transform: scale(1.1);
 }
 
-@keyframes audio-pulse {
-  0% { transform: translateY(-50%) scale(1); }
-  50% { transform: translateY(-50%) scale(1.05); }
-  100% { transform: translateY(-50%) scale(1); }
-}
+
 
 .audio-toggle.loading {
-  background: rgba(241, 196, 15, 0.3);
-  border-color: rgba(241, 196, 15, 0.6);
   cursor: wait;
   animation: pulse 1.5s ease-in-out infinite;
 }
@@ -322,8 +308,6 @@
 }
 
 .audio-toggle:disabled:hover {
-  background: rgba(241, 196, 15, 0.3);
-  border-color: rgba(241, 196, 15, 0.6);
   transform: translateY(-50%);
 }
 
