@@ -841,6 +841,12 @@ const Pokedex: React.FC = () => {
       {/* Loading Modal */}
       {showLoadingModal && (
         <div className="loading-modal-overlay">
+          <div 
+            className="loading-bg-container"
+            style={{
+              backgroundImage: `url(${process.env.PUBLIC_URL || ''}/loading_bg.png)`
+            }}
+          ></div>
           <div className="loading-modal">
             <div className="loading-modal-header">
               <div className="pokedex-logo">
