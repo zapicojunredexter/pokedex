@@ -74,8 +74,36 @@ const Pokedex: React.FC = () => {
   const [isAudioPlaying, setIsAudioPlaying] = useState(false);
   const [showLoadingModal, setShowLoadingModal] = useState(true);
   const [loadingProgress, setLoadingProgress] = useState(0);
+
+  const [volume, setVolume] = useState(0.5);
+  const [isVolumeSliderOpen, setIsVolumeSliderOpen] = useState(false);
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [autoPlayAudio, setAutoPlayAudio] = useState(true);
+  const [showPokemonNumbers, setShowPokemonNumbers] = useState(true);
+  const [enableAnimations, setEnableAnimations] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
+  const [compactView, setCompactView] = useState(false);
   const pokemonListRef = useRef<HTMLDivElement>(null);
   const audioRef = useRef<HTMLAudioElement>(null);
+
+  // Close volume slider when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isVolumeSliderOpen) {
+        const target = event.target as Element;
+        const audioControlContainer = document.querySelector('.audio-control-container');
+        
+        if (audioControlContainer && !audioControlContainer.contains(target)) {
+          setIsVolumeSliderOpen(false);
+        }
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [isVolumeSliderOpen]);
 
   const [pokemonList, setPokemonList] = useState<PokemonData[]>([
     { 
@@ -647,6 +675,10 @@ const Pokedex: React.FC = () => {
       console.log('Audio ref mounted');
       console.log('Audio element:', audioRef.current);
       console.log('Audio src:', audioRef.current.src);
+      
+      // Set volume to 50% (0.5)
+      audioRef.current.volume = volume;
+      console.log('Audio volume set to 50%');
     }
   }, []);
 
@@ -774,6 +806,18 @@ const Pokedex: React.FC = () => {
     }
   };
 
+  const handleVolumeChange = (newVolume: number) => {
+    setVolume(newVolume);
+    if (audioRef.current) {
+      audioRef.current.volume = newVolume;
+      console.log('Volume changed to:', newVolume);
+    }
+  };
+
+
+
+
+
   // Handle starting the app and enabling audio
   const handleStartApp = () => {
     console.log('Starting Pokedex app...');
@@ -898,26 +942,18 @@ const Pokedex: React.FC = () => {
       <div className="pokedex-container">
       <div className="pokedex-header">
         <h1>KANTO POKÉDEX</h1>
-        <div 
-          className={`audio-toggle ${isAudioEnabled ? 'enabled' : 'disabled'} ${isAudioLoading ? 'loading' : ''} ${isAudioPlaying ? 'playing' : ''}`}
-          onClick={toggleAudio}
-          title={isAudioEnabled ? 'Disable Audio' : 'Enable Audio'}
-        >
-          {isAudioLoading ? (
-            '⏳'
-          ) : isAudioEnabled ? (
+        <div className="header-controls">
+          <button 
+            className="settings-button"
+            onClick={() => setIsSettingsOpen(true)}
+            title="Settings"
+          >
             <img 
-              src={`${process.env.PUBLIC_URL || ''}/unmute.svg`} 
-              alt="Audio Enabled" 
-              className="audio-icon"
+              src={`${process.env.PUBLIC_URL || ''}/settings.png`} 
+              alt="Settings" 
+              className="settings-icon"
             />
-          ) : (
-            <img 
-              src={`${process.env.PUBLIC_URL || ''}/mute.svg`} 
-              alt="Audio Disabled" 
-              className="audio-icon"
-            />
-          )}
+          </button>
         </div>
       </div>
       <div className="pokedex-body">
@@ -1796,6 +1832,128 @@ const Pokedex: React.FC = () => {
         <source src={`${process.env.PUBLIC_URL || ''}/pokemon_audio.mp3`} type="audio/mp3" />
         Your browser does not support the audio element.
       </audio>
+
+      {/* Settings Overlay */}
+      {isSettingsOpen && (
+        <div className="settings-overlay">
+          <div className="settings-modal">
+            <div className="settings-header">
+              <h2>⚙️ Settings</h2>
+              <button 
+                className="close-settings-btn"
+                onClick={() => setIsSettingsOpen(false)}
+              >
+                ✕
+              </button>
+            </div>
+            
+            <div className="settings-content">
+              <div className="settings-section">
+                <h3>🎵 Audio Settings</h3>
+                <div className="setting-item">
+                  <label htmlFor="volume-slider">Volume:</label>
+                  <div className="volume-control">
+                    <input
+                      id="volume-slider"
+                      type="range"
+                      min="0"
+                      max="1"
+                      step="0.1"
+                      value={volume}
+                      onChange={(e) => handleVolumeChange(parseFloat(e.target.value))}
+                      className="settings-volume-slider"
+                    />
+                    <span className="volume-value">{Math.round(volume * 100)}%</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="settings-section">
+                <h3>🎵 Audio Settings</h3>
+                <div className="setting-item">
+                  <label htmlFor="auto-play-audio">Auto-play Audio:</label>
+                  <div className="toggle-switch">
+                    <input
+                      id="auto-play-audio"
+                      type="checkbox"
+                      checked={autoPlayAudio}
+                      onChange={(e) => setAutoPlayAudio(e.target.checked)}
+                    />
+                    <label htmlFor="auto-play-audio" className="toggle-label"></label>
+                  </div>
+                </div>
+              </div>
+
+              <div className="settings-section">
+                <h3>👁️ Display Settings</h3>
+                <div className="setting-item">
+                  <label htmlFor="show-numbers">Show Pokemon Numbers:</label>
+                  <div className="toggle-switch">
+                    <input
+                      id="show-numbers"
+                      type="checkbox"
+                      checked={showPokemonNumbers}
+                      onChange={(e) => setShowPokemonNumbers(e.target.checked)}
+                    />
+                    <label htmlFor="show-numbers" className="toggle-label"></label>
+                  </div>
+                </div>
+                
+                <div className="setting-item">
+                  <label htmlFor="enable-animations">Enable Animations:</label>
+                  <div className="toggle-switch">
+                    <input
+                      id="enable-animations"
+                      type="checkbox"
+                      checked={enableAnimations}
+                      onChange={(e) => setEnableAnimations(e.target.checked)}
+                    />
+                    <label htmlFor="enable-animations" className="toggle-label"></label>
+                  </div>
+                </div>
+                
+                <div className="setting-item">
+                  <label htmlFor="dark-mode">Dark Mode:</label>
+                  <div className="toggle-switch">
+                    <input
+                      id="dark-mode"
+                      type="checkbox"
+                      checked={darkMode}
+                      onChange={(e) => setDarkMode(e.target.checked)}
+                    />
+                    <label htmlFor="dark-mode" className="toggle-label"></label>
+                  </div>
+                </div>
+                
+                <div className="setting-item">
+                  <label htmlFor="compact-view">Compact View:</label>
+                  <div className="toggle-switch">
+                    <input
+                      id="compact-view"
+                      type="checkbox"
+                      checked={compactView}
+                      onChange={(e) => setCompactView(e.target.checked)}
+                    />
+                    <label htmlFor="compact-view" className="toggle-label"></label>
+                  </div>
+                </div>
+              </div>
+
+              <div className="settings-section">
+                <h3>🎮 Controls</h3>
+                <div className="setting-item">
+                  <label>Keyboard Navigation:</label>
+                  <div className="control-info">
+                    <p>↑↓ Arrow keys: Navigate Pokemon</p>
+                    <p>Enter: View Pokemon details</p>
+                    <p>Escape: Close details</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
     </>
   );
