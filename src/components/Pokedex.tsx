@@ -888,6 +888,7 @@ const Pokedex: React.FC = () => {
           <div 
             className="loading-bg-container"
             style={{
+              backgroundColor: '#e74c3c',
               backgroundImage: `url(${process.env.PUBLIC_URL || ''}/loading_bg.png)`
             }}
           ></div>
