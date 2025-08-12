@@ -226,9 +226,9 @@ const Pokedex: React.FC = () => {
     { 
       id: 10, 
       name: 'Caterpie', 
-      status: 'seen', 
+      status: 'unknown', 
       isCaught: false, 
-      isEncountered: true,
+      isEncountered: false,
       types: ['Bug'],
       description: 'Its short feet are tipped with suction pads that enable it to tirelessly climb slopes and walls.',
       habitat: 'Forests and grasslands',
@@ -239,9 +239,9 @@ const Pokedex: React.FC = () => {
     { 
       id: 11, 
       name: 'Metapod', 
-      status: 'seen', 
+      status: 'unknown', 
       isCaught: false, 
-      isEncountered: true,
+      isEncountered: false,
       types: ['Bug'],
       description: 'This Pokémon is vulnerable to attack while its shell is soft, exposing its weak and tender body.',
       habitat: 'Forests and grasslands',
@@ -252,9 +252,9 @@ const Pokedex: React.FC = () => {
     { 
       id: 12, 
       name: 'Butterfree', 
-      status: 'seen', 
+      status: 'unknown', 
       isCaught: false, 
-      isEncountered: true,
+      isEncountered: false,
       types: ['Bug', 'Flying'],
       description: 'In battle, it flaps its wings at high speed to release highly toxic dust into the air.',
       habitat: 'Forests and grasslands',
@@ -265,9 +265,9 @@ const Pokedex: React.FC = () => {
     { 
       id: 13, 
       name: 'Weedle', 
-      status: 'seen', 
+      status: 'unknown', 
       isCaught: false, 
-      isEncountered: true,
+      isEncountered: false,
       types: ['Bug', 'Poison'],
       description: 'Often found in forests, eating leaves. It has a sharp venomous stinger on its head.',
       habitat: 'Forests and grasslands',
@@ -278,9 +278,9 @@ const Pokedex: React.FC = () => {
     { 
       id: 14, 
       name: 'Kakuna', 
-      status: 'seen', 
+      status: 'unknown', 
       isCaught: false, 
-      isEncountered: true,
+      isEncountered: false,
       types: ['Bug', 'Poison'],
       description: 'Almost incapable of moving, this Pokémon can only harden its shell to protect itself from predators.',
       habitat: 'Forests and grasslands',
@@ -369,9 +369,9 @@ const Pokedex: React.FC = () => {
     { 
       id: 21, 
       name: 'Spearow', 
-      status: 'seen', 
+      status: 'unknown', 
       isCaught: false, 
-      isEncountered: true,
+      isEncountered: false,
       types: ['Normal', 'Flying'],
       description: 'Eats bugs in grassy areas. It has to flap its short wings at high speed to stay airborne.',
       habitat: 'Grasslands and forests',
@@ -382,9 +382,9 @@ const Pokedex: React.FC = () => {
     { 
       id: 22, 
       name: 'Fearow', 
-      status: 'seen', 
+      status: 'unknown', 
       isCaught: false, 
-      isEncountered: true,
+      isEncountered: false,
       types: ['Normal', 'Flying'],
       description: 'With its huge and magnificent wings, it can keep aloft without ever having to land for rest.',
       habitat: 'Grasslands and forests',
@@ -395,9 +395,9 @@ const Pokedex: React.FC = () => {
     { 
       id: 23, 
       name: 'Ekans', 
-      status: 'seen', 
+      status: 'unknown', 
       isCaught: false, 
-      isEncountered: true,
+      isEncountered: false,
       types: ['Poison'],
       description: 'Moves silently and stealthily. Eats the eggs of birds, such as Pidgey and Spearow, whole.',
       habitat: 'Grasslands and forests',
@@ -408,9 +408,9 @@ const Pokedex: React.FC = () => {
     { 
       id: 24, 
       name: 'Arbok', 
-      status: 'seen', 
+      status: 'unknown', 
       isCaught: false, 
-      isEncountered: true,
+      isEncountered: false,
       types: ['Poison'],
       description: 'It is rumored that the ferocious warning markings on its belly differ from area to area.',
       habitat: 'Grasslands and forests',
@@ -1886,52 +1886,56 @@ const Pokedex: React.FC = () => {
 
               <div className="settings-section">
                 <h3>👁️ Display Settings</h3>
-                <div className="setting-item">
+                <div className="setting-item disabled">
                   <label htmlFor="show-numbers">Show Pokemon Numbers:</label>
                   <div className="toggle-switch">
                     <input
                       id="show-numbers"
                       type="checkbox"
                       checked={showPokemonNumbers}
+                      disabled={true}
                       onChange={(e) => setShowPokemonNumbers(e.target.checked)}
                     />
                     <label htmlFor="show-numbers" className="toggle-label"></label>
                   </div>
                 </div>
                 
-                <div className="setting-item">
+                <div className="setting-item disabled">
                   <label htmlFor="enable-animations">Enable Animations:</label>
                   <div className="toggle-switch">
                     <input
                       id="enable-animations"
                       type="checkbox"
                       checked={enableAnimations}
+                      disabled={true}
                       onChange={(e) => setEnableAnimations(e.target.checked)}
                     />
                     <label htmlFor="enable-animations" className="toggle-label"></label>
                   </div>
                 </div>
                 
-                <div className="setting-item">
+                <div className="setting-item disabled">
                   <label htmlFor="dark-mode">Dark Mode:</label>
                   <div className="toggle-switch">
                     <input
                       id="dark-mode"
                       type="checkbox"
                       checked={darkMode}
+                      disabled={true}
                       onChange={(e) => setDarkMode(e.target.checked)}
                     />
                     <label htmlFor="dark-mode" className="toggle-label"></label>
                   </div>
                 </div>
                 
-                <div className="setting-item">
+                <div className="setting-item disabled">
                   <label htmlFor="compact-view">Compact View:</label>
                   <div className="toggle-switch">
                     <input
                       id="compact-view"
                       type="checkbox"
                       checked={compactView}
+                      disabled={true}
                       onChange={(e) => setCompactView(e.target.checked)}
                     />
                     <label htmlFor="compact-view" className="toggle-label"></label>
